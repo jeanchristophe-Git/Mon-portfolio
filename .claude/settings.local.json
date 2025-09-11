@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Read(//c/Users/bogbe/Desktop/Portfolio/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "profile": {
+    "image": "/image/me/profile-main.png"
+  },
+  "hero": {
+    "title": "À propos de moi",
+    "subtitle": "Jean-Christophe Bogbé",
+    "description": "Je conçois des solutions numériques sécurisées et accessibles. J'attache une valeur particulière à la clarté, à la fiabilité et à l'impact durable."
+  },
+  "experiences": [
+    {
+      "id": 1,
+      "company": "KOTA",
+      "location": "Abidjan, Côte d'Ivoire",
+      "role": "Co-fondateur & CTO",
+      "startDate": "2023-01-01",
+      "endDate": null,
+      "dateDisplay": "JAN 2023 - PRÉSENT",
+      "contractType": "STARTUP",
+      "workMode": "HYBRIDE",
+      "responsibilities": [
+        "Architecture et développement de l'application mobile de tontine moderne",
+        "Implémentation de la sécurité blockchain et cryptographie avancée", 
+        "Management de l'équipe technique et définition de la roadmap produit"
+      ],
+      "featured": true
+    },
+    {
+      "id": 2, 
+      "company": "Freelance",
+      "location": "Abidjan, Côte d'Ivoire",
+      "role": "Développeur Full-Stack & Security Consultant",
+      "startDate": "2022-01-01",
+      "endDate": "2023-12-31",
+      "dateDisplay": "JAN 2022 - DÉC 2023",
+      "contractType": "FREELANCE",
+      "workMode": "REMOTE",
+      "responsibilities": [
+        "Développement d'applications web et mobiles sécurisées",
+        "Audits de sécurité et tests de pénétration",
+        "Conseil en architecture technique et cybersécurité"
+      ],
+      "featured": true
+    }
+  ],
+  "education": [
+    {
+      "id": 1,
+      "institution": "Institut National Polytechnique Houphouët-Boigny (INPHB)",
+      "degree": "Master en Sciences et Cybersécurité en Intelligence Artificielle (MSCIA)",
+      "field": "Cybersécurité & IA",
+      "startYear": 2022,
+      "endYear": 2024,
+      "displayPeriod": "2022 – 2024",
+      "achievements": [
+        "Spécialisation en cybersécurité appliquée à l'intelligence artificielle",
+        "Projet de fin d'études : WebShield AI - Solution de détection d'intrusions basée sur l'IA",
+        "Major de promotion avec mention très bien"
+      ],
+      "type": "master",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "institution": "Institut National Polytechnique Houphouët-Boigny (INPHB)", 
+      "degree": "Licence en Génie Informatique",
+      "field": "Informatique & Réseaux",
+      "startYear": 2019,
+      "endYear": 2022,
+      "displayPeriod": "2019 – 2022",
+      "achievements": [
+        "Formation complète en développement logiciel et réseaux informatiques",
+        "Projet notable : Système de gestion scolaire avec architecture microservices",
+        "Président du club informatique de l'école"
+      ],
+      "type": "licence",
+      "featured": true
+    }
+  ],
+  "certifications": [
+    {
+      "id": 1,
+      "title": "Certified Ethical Hacker (CEH)",
+      "issuer": "EC-Council",
+      "url": "https://www.eccouncil.org",
+      "category": "Cybersécurité",
+      "year": 2024,
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "AWS Solutions Architect",
+      "issuer": "Amazon Web Services",
+      "url": "https://aws.amazon.com",
+      "category": "Cloud Computing",
+      "year": 2023,
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "React Native Development",
+      "issuer": "Meta",
+      "url": "https://developers.facebook.com",
+      "category": "Développement Mobile",
+      "year": 2023,
+      "featured": true
+    }
+  ],
+  "skills": {
+    "title": "Mes compétences",
+    "categories": [
+      {
+        "name": "Développement",
+        "items": ["React", "React Native", "Node.js", "NestJS", "TypeScript", "Python", "PostgreSQL", "MongoDB"]
+      },
+      {
+        "name": "Cybersécurité", 
+        "items": ["Audit de sécurité", "Pen Testing", "OWASP", "Cryptographie", "Blockchain", "Forensics"]
+      },
+      {
+        "name": "Product & Management",
+        "items": ["Product Strategy", "Agile/Scrum", "Team Leadership", "Architecture Technique"]
+      },
+      {
+        "name": "Cloud & DevOps",
+        "items": ["AWS", "Docker", "Kubernetes", "CI/CD", "Microservices"]
+      }
+    ]
+  },
+  "values": {
+    "title": "Mes valeurs",
+    "items": [
+      {
+        "title": "Security-First",
+        "description": "Chaque produit doit intégrer la sécurité dès sa conception, pas après"
+      },
+      {
+        "title": "Impact Africain", 
+        "description": "Créer des solutions qui résolvent les vrais défis du continent africain"
+      },
+      {
+        "title": "Excellence Technique",
+        "description": "Code propre, architecture solide et performance optimale"
+      },
+      {
+        "title": "Innovation Responsable",
+        "description": "Utiliser la technologie pour créer un avenir meilleur et durable"
+      }
+    ]
+  },
+  "story": {
+    "title": "Mon parcours",
+    "content": [
+      {
+        "title": "Les Débuts (2019-2022)",
+        "description": "Formation solide à l'INPHB en génie informatique. Découverte de ma passion pour la cybersécurité et le développement. Premiers projets freelance."
+      },
+      {
+        "title": "Spécialisation (2022-2024)",
+        "description": "Master MSCIA à l'INPHB, fusion entre cybersécurité et IA. Développement de WebShield AI. Montée en compétences sur l'architecture sécurisée."
+      },
+      {
+        "title": "Entrepreneuriat (2023-Présent)",
+        "description": "Co-fondation de KOTA, l'app révolutionnaire de tontine moderne. Vision : démocratiser l'accès aux services financiers en Afrique avec une approche security-first."
+      }
+    ]
+  },
+  "journal": {
+    "title": "Le monde que je vois",
+    "description": "Inspiration visuelle et exploration créative",
+    "images": [
+      { "id": 1, "src": "/image/design/journal-1.jpg", "alt": "Vision créative 1" },
+      { "id": 2, "src": "/image/design/journal-2.jpg", "alt": "Vision créative 2" }, 
+      { "id": 3, "src": "/image/design/journal-3.jpg", "alt": "Vision créative 3" }
+    ]
+  },
+  "belief": {
+    "title": "Je crois qu'il est de notre responsabilité de créer l'avenir que nous voulons, maintenant.",
+    "subtitle": "Conviction",
+    "description": "L'Afrique a besoin de solutions technologiques pensées par et pour les Africains",
+    "handImage": "/image/design/hand.png",
+    "mosaicImages": [
+      { "id": 1, "src": "/image/design/mosaic-1.jpg", "alt": "Vision Afrique 1" },
+      { "id": 2, "src": "/image/design/mosaic-2.jpg", "alt": "Vision Afrique 2" },
+      { "id": 3, "src": "/image/design/mosaic-3.jpg", "alt": "Vision Afrique 3" },
+      { "id": 4, "src": "/image/design/mosaic-4.jpg", "alt": "Vision Afrique 4" }
+    ]
+  }
+}

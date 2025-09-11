@@ -1,0 +1,164 @@
+{
+  "personal": {
+    "name": "Jean-Christophe Bogbé",
+    "brand": "JC Bogbé",
+    "title": "Product-Minded Engineer",
+    "location": "Abidjan, CI",
+    "email": "contact@jcbogbe.com",
+    "availability": "Disponible pour projets"
+  },
+  "hero": {
+    "subtitle": "Product-Minded Engineer & Cybersecurity enthousiast",
+    "title": "Créer des produits<br/>sécurisés innovants !",
+    "description": "je conçois des solutions numériques qui allient impact réel et sécurité dès la conception. Je suis également passionné par la cybersécurité, j'aime créer des produits innovants qui résolvent des problèmes réels.",
+    "cta": "Découvrir mon parcours",
+    "projectPlaceholders": ["KOTA App", "WebShield AI", "Portfolio", "Projet 4"]
+  },
+  "expertise": {
+    "title": "Ce que je fais",
+    "subtitle": "Mes domaines d'expertise",
+    "items": [
+      {
+        "id": 1,
+        "title": "Développement Full-Stack",
+        "description": "Applications web et mobiles sécurisées avec React, Node.js, React Native",
+        "image": "/image/design/fullstack.jpg",
+        "skills": ["REACT", "NODE.JS", "TYPESCRIPT", "REACT-NATIVE", "NESTJS"]
+      },
+      {
+        "id": 2,
+        "title": "Cybersécurité",
+        "description": "Audit de sécurité, tests de pénétration et architecture sécurisée", 
+        "image": "/image/design/security.jpg",
+        "skills": ["OWASP", "PEN-TESTING", "CRYPTOGRAPHIE", "AUDIT-SECURITE"]
+      }
+    ]
+  },
+  "projects": {
+    "title": "Projets réalisés",
+    "subtitle": "Mes dernières créations",
+    "items": [
+      {
+        "id": 1,
+        "title": "KOTA - App de Tontine",
+        "description": "Application révolutionnaire de tontine moderne pour l'Afrique",
+        "tech": ["React Native", "NestJS", "TypeScript", "PostgreSQL"],
+        "image": "/image/projet/kota.jpg",
+        "category": "Mobile App",
+        "featured": true
+      },
+      {
+        "id": 2,
+        "title": "WebShield AI",
+        "description": "Solution de cybersécurité basée sur l'intelligence artificielle",
+        "tech": ["Python", "AI/ML", "Docker", "FastAPI"],
+        "image": "/image/projet/webshield.jpg",
+        "category": "Security Tool",
+        "featured": true
+      },
+      {
+        "id": 3,
+        "title": "Portfolio Personnel",
+        "description": "Portfolio moderne avec architecture sécurisée",
+        "tech": ["Next.js", "Tailwind", "Vercel"],
+        "image": "/image/projet/portfolio.jpg",
+        "category": "Website",
+        "featured": true
+      }
+    ]
+  },
+  "playground": {
+    "title": "Design playground",
+    "description": "Mes explorations créatives et expérimentations design",
+    "shots": [
+      { "id": 1, "src": "/image/design/shot-1.jpg", "alt": "Design exploration 1" },
+      { "id": 2, "src": "/image/design/shot-2.jpg", "alt": "Design exploration 2" },
+      { "id": 3, "src": "/image/design/shot-3.jpg", "alt": "Design exploration 3" },
+      { "id": 4, "src": "/image/design/shot-4.jpg", "alt": "Design exploration 4" },
+      { "id": 5, "src": "/image/design/shot-5.jpg", "alt": "Design exploration 5" },
+      { "id": 6, "src": "/image/design/shot-6.jpg", "alt": "Design exploration 6" }
+    ]
+  },
+  "testimonials": [
+    {
+      "id": 1,
+      "quote": "Jean-Christophe allie parfaitement expertise technique et vision produit.",
+      "author": "Partenaire KOTA",
+      "role": "Co-fondateur",
+      "company": "KOTA"
+    },
+    {
+      "id": 2,
+      "quote": "Approche security-first remarquable et livraison impeccable.",
+      "author": "Client WebShield",
+      "role": "CTO",
+      "company": "TechCorp"
+    },
+    {
+      "id": 3,
+      "quote": "Developer talentueux avec une vraie vision business.",
+      "author": "Mentor INPHB",
+      "role": "Professeur",
+      "company": "INPHB"
+    }
+  ],
+  "faq": [
+    {
+      "id": 1,
+      "question": "Quels services proposez-vous ?",
+      "answer": "Développement full-stack, audit de sécurité, conception de produits et conseil technique.",
+      "order": 1
+    },
+    {
+      "id": 2,
+      "question": "Quelles technologies utilisez-vous ?",
+      "answer": "React/Next.js, Node.js/NestJS, React Native, Python, PostgreSQL, Docker.",
+      "order": 2
+    },
+    {
+      "id": 3,
+      "question": "Comment travaillons-nous ensemble ?",
+      "answer": "Sprints de 1-2 semaines avec points réguliers et approche collaborative.",
+      "order": 3
+    },
+    {
+      "id": 4,
+      "question": "Où êtes-vous basé ?",
+      "answer": "Abidjan, Côte d'Ivoire. Disponible en remote avec flexibilité horaire.",
+      "order": 4
+    },
+    {
+      "id": 5,
+      "question": "Votre approche sécurité ?",
+      "answer": "Security-first : chaque projet intègre la sécurité dès la conception.",
+      "order": 5
+    }
+  ],
+  "contact": {
+    "title": "Nouveau projet — bientôt disponible",
+    "subtitle": "Quelque chose d'innovant se prépare",
+    "description": "Contactez-moi pour discuter de votre projet",
+    "cta": "Me contacter",
+    "email": "contact@jcbogbe.com",
+    "comingSoonImage": "/image/projet/coming-soon.jpg"
+  },
+  "navigation": {
+    "mainMenu": [
+      { "id": "home", "label": "Accueil", "isExternal": false },
+      { "id": "expertise", "label": "Expertise", "isExternal": false },
+      { "id": "work", "label": "Projets", "isExternal": false },
+      { "id": "about", "label": "À propos", "isExternal": true, "href": "/about" }
+    ],
+    "links": {
+      "resume": "https://drive.google.com",
+      "linkedin": "https://linkedin.com/in/jcbogbe",
+      "github": "https://github.com/jcbogbe",
+      "email": "mailto:contact@jcbogbe.com"
+    }
+  },
+  "social": [
+    { "name": "LinkedIn", "url": "https://linkedin.com/in/jcbogbe", "icon": "linkedin" },
+    { "name": "GitHub", "url": "https://github.com/jcbogbe", "icon": "github" },
+    { "name": "Twitter", "url": "https://x.com/jcbogbe", "icon": "twitter" }
+  ]
+}

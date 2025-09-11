@@ -1,0 +1,39 @@
+{
+  "name": "Dinidu Missaka - Experience Designer Portfolio",
+  "short_name": "Dinidu Portfolio",
+  "description": "Portfolio professionnel de Dinidu Missaka, Experience Designer & Visual Storyteller",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0b0b",
+  "theme_color": "#0B84FF",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "apple touch icon"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["portfolio", "design", "ux", "ui"],
+  "lang": "fr",
+  "scope": "/",
+  "prefer_related_applications": false
+}
