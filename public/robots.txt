@@ -1,0 +1,13 @@
+# Fichier robots.txt pour le portfolio de Dinidu Missaka
+# Permet aux moteurs de recherche d'indexer le site
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://votre-domaine.com/sitemap.xml
+
+# Désallowé - fichiers privés
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
