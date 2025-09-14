@@ -136,9 +136,6 @@ const nextConfig = {
   
   // Output standalone pour déploiement optimisé
   output: 'standalone',
-  
-  // Fix workspace root warning
-  outputFileTracingRoot: process.cwd(),
 };
 
 export default nextConfig;

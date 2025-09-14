@@ -1,17 +1,17 @@
 // Configuration principale du site
 
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 // Configuration des polices
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono", 
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   display: "swap",
 });
@@ -135,7 +135,7 @@ export default function RootLayout({ children }) {
         <link rel="manifest" href="/manifest.json" />
       </head>
       
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0b0b0b] text-zinc-200 px-10 `}>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-[#0b0b0b] text-zinc-200 px-10 `}>
         {/* Conteneur principal avec largeur optimisée */}
         <div className="relative min-h-screen">
           {children}

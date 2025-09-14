@@ -4,7 +4,12 @@
       "Bash(ls:*)",
       "Read(//c/Users/bogbe/Desktop/Portfolio/**)",
       "Bash(git remote set-url:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(npm install)",
+      "Bash(npm run build:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
