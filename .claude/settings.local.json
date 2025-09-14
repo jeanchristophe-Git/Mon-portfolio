@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(ls:*)",
-      "Read(//c/Users/bogbe/Desktop/Portfolio/**)"
+      "Read(//c/Users/bogbe/Desktop/Portfolio/**)",
+      "Bash(git remote set-url:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []
