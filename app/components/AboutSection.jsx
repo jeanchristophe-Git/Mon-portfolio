@@ -1,7 +1,7 @@
-import aboutData from "../data/about.json";
+import heroData from "../data/about/hero.json";
 
 export default function AboutSection() {
-  const { hero } = aboutData;
+  const hero = heroData;
   
   return (
     <section id="about" className="mx-auto max-w-5xl px-4 py-16 text-center">

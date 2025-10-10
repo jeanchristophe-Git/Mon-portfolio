@@ -1,0 +1,36 @@
+{
+  "title": "Design playground",
+  "description": "Mes explorations créatives et expérimentations design",
+  "shots": [
+    {
+      "id": 1,
+      "src": "/image/design/shot-1.jpg",
+      "alt": "Design exploration 1"
+    },
+    {
+      "id": 2,
+      "src": "/image/design/shot-2.jpg",
+      "alt": "Design exploration 2"
+    },
+    {
+      "id": 3,
+      "src": "/image/design/shot-3.jpg",
+      "alt": "Design exploration 3"
+    },
+    {
+      "id": 4,
+      "src": "/image/design/shot-4.jpg",
+      "alt": "Design exploration 4"
+    },
+    {
+      "id": 5,
+      "src": "/image/design/shot-5.jpg",
+      "alt": "Design exploration 5"
+    },
+    {
+      "id": 6,
+      "src": "/image/design/shot-6.jpg",
+      "alt": "Design exploration 6"
+    }
+  ]
+}

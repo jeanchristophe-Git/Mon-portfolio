@@ -3,10 +3,10 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
-import landingData from "../data/landing.json";
+import projectsData from "../data/landing/projects.json";
 
 export default function Projects() {
-  const { projects } = landingData;
+  const projects = projectsData;
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 

@@ -1,0 +1,31 @@
+{
+  "mainMenu": [
+    {
+      "id": "home",
+      "label": "Accueil",
+      "isExternal": false
+    },
+    {
+      "id": "expertise",
+      "label": "Expertise",
+      "isExternal": false
+    },
+    {
+      "id": "work",
+      "label": "Projets",
+      "isExternal": false
+    },
+    {
+      "id": "about",
+      "label": "À propos",
+      "isExternal": true,
+      "href": "/about"
+    }
+  ],
+  "links": {
+    "resume": "https://drive.google.com",
+    "linkedin": "https://linkedin.com/in/jcbogbe",
+    "github": "https://github.com/jcbogbe",
+    "email": "mailto:contact@jcbogbe.com"
+  }
+}

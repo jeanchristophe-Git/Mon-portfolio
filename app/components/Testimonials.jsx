@@ -1,7 +1,7 @@
-import landingData from "../data/landing.json";
+import testimonialsData from "../data/landing/testimonials.json";
 
 export default function Testimonials() {
-  const testimonialsList = landingData.testimonials;
+  const testimonialsList = testimonialsData.items;
 
   return (
     <section id="testimonials" className="mx-auto max-w-6xl px-4 pb-28">

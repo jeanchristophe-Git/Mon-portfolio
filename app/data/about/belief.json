@@ -1,0 +1,28 @@
+{
+  "title": "Je crois qu'il est de notre responsabilité de créer l'avenir que nous voulons, maintenant.",
+  "subtitle": "Conviction",
+  "description": "L'Afrique a besoin de solutions technologiques pensées par et pour les Africains",
+  "handImage": "/image/design/hand.png",
+  "mosaicImages": [
+    {
+      "id": 1,
+      "src": "/image/design/mosaic-1.jpg",
+      "alt": "Vision Afrique 1"
+    },
+    {
+      "id": 2,
+      "src": "/image/design/mosaic-2.jpg",
+      "alt": "Vision Afrique 2"
+    },
+    {
+      "id": 3,
+      "src": "/image/design/mosaic-3.jpg",
+      "alt": "Vision Afrique 3"
+    },
+    {
+      "id": 4,
+      "src": "/image/design/mosaic-4.jpg",
+      "alt": "Vision Afrique 4"
+    }
+  ]
+}

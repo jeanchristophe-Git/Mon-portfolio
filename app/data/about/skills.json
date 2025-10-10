@@ -1,0 +1,21 @@
+{
+  "title": "Mes compétences",
+  "categories": [
+    {
+      "name": "Développement",
+      "items": ["React", "React Native", "Node.js", "NestJS", "TypeScript", "Python", "PostgreSQL", "MongoDB"]
+    },
+    {
+      "name": "Cybersécurité",
+      "items": ["Audit de sécurité", "Pen Testing", "OWASP", "Cryptographie", "Blockchain", "Forensics"]
+    },
+    {
+      "name": "Product & Management",
+      "items": ["Product Strategy", "Agile/Scrum", "Team Leadership", "Architecture Technique"]
+    },
+    {
+      "name": "Cloud & DevOps",
+      "items": ["AWS", "Docker", "Kubernetes", "CI/CD", "Microservices"]
+    }
+  ]
+}

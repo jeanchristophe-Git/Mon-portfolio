@@ -1,0 +1,36 @@
+{
+  "title": "Projets réalisés",
+  "subtitle": "Mes dernières créations",
+  "items": [
+    {
+      "id": 1,
+      "title": "KOTA - App de Tontine",
+      "description": "Application révolutionnaire de tontine moderne pour l'Afrique",
+      "tech": ["React Native", "NestJS", "TypeScript", "PostgreSQL"],
+      "image": "/image/projet/kota.jpg",
+      "category": "Mobile App",
+      "featured": true,
+      "slug": "kota"
+    },
+    {
+      "id": 2,
+      "title": "WebShield AI",
+      "description": "Solution de cybersécurité basée sur l'intelligence artificielle",
+      "tech": ["Python", "AI/ML", "Docker", "FastAPI"],
+      "image": "/image/projet/webshield.jpg",
+      "category": "Security Tool",
+      "featured": true,
+      "slug": "webshield"
+    },
+    {
+      "id": 3,
+      "title": "Portfolio Personnel",
+      "description": "Portfolio moderne avec architecture sécurisée",
+      "tech": ["Next.js", "Tailwind", "Vercel"],
+      "image": "/image/projet/portfolio.jpg",
+      "category": "Website",
+      "featured": true,
+      "slug": "portfolio"
+    }
+  ]
+}

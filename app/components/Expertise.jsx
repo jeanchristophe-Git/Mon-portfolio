@@ -2,10 +2,10 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import landingData from "../data/landing.json";
+import expertiseData from "../data/landing/expertise.json";
 
 export default function Expertise() {
-  const { expertise } = landingData;
+  const expertise = expertiseData;
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 

@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 
 import PillNavbar from "../../components/PillNavbar";
 import SiteFooter from "../../components/SiteFooter";
-import landingData from "../../data/landing.json";
+import projectsData from "../../data/landing/projects.json";
 
 // Données des projets détaillées
 const projectsDetails = {

@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import landingData from "../data/landing.json";
+import profileData from "../data/personal/profile.json";
+import navigationData from "../data/navigation.json";
 
 const NAV_ITEMS = [
   { id: "home", label: "Accueil" },
@@ -13,7 +14,8 @@ const NAV_ITEMS = [
 ];
 
 export default function PillNavbar({ active, onJump, open, setOpen }) {
-  const { personal, navigation } = landingData;
+  const personal = profileData;
+  const navigation = navigationData;
   
   return (
     <motion.header 

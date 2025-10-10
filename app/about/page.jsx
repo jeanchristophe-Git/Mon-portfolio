@@ -22,8 +22,31 @@ import {
 
 // =================== IMPORTS ===================
 import PillNavbar from "../components/PillNavbar";
-import aboutData from "../data/about.json"; // JSON structure: profile, hero, experiences, education, certifications, skills, values
+import profileData from "../data/personal/profile.json";
+import heroData from "../data/about/hero.json";
+import experiencesData from "../data/about/experiences.json";
+import educationData from "../data/about/education.json";
+import certificationsData from "../data/about/certifications.json";
+import skillsData from "../data/about/skills.json";
+import valuesData from "../data/about/values.json";
+import storyData from "../data/about/story.json";
+import journalData from "../data/about/journal.json";
+import beliefData from "../data/about/belief.json";
 import SiteFooter from "../components/SiteFooter";
+
+// Reconstituer la structure aboutData pour compatibilité
+const aboutData = {
+  profile: profileData,
+  hero: heroData,
+  experiences: experiencesData.items,
+  education: educationData.items,
+  certifications: certificationsData.items,
+  skills: skillsData,
+  values: valuesData,
+  story: storyData,
+  journal: journalData,
+  belief: beliefData
+};
 
 // =================== ACCORDION COMPONENT ===================
 // Composant Accordion réutilisable pour Experience, Education, Certifications

@@ -1,0 +1,17 @@
+{
+  "title": "Mon parcours",
+  "content": [
+    {
+      "title": "Les Débuts (2019-2022)",
+      "description": "Formation solide à l'INPHB en génie informatique. Découverte de ma passion pour la cybersécurité et le développement. Premiers projets freelance."
+    },
+    {
+      "title": "Spécialisation (2022-2024)",
+      "description": "Master MSCIA à l'INPHB, fusion entre cybersécurité et IA. Développement de WebShield AI. Montée en compétences sur l'architecture sécurisée."
+    },
+    {
+      "title": "Entrepreneuriat (2023-Présent)",
+      "description": "Co-fondation de KOTA, l'app révolutionnaire de tontine moderne. Vision : démocratiser l'accès aux services financiers en Afrique avec une approche security-first."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "question": "Quels services proposez-vous ?",
+      "answer": "Développement full-stack, audit de sécurité, conception de produits et conseil technique.",
+      "order": 1
+    },
+    {
+      "id": 2,
+      "question": "Quelles technologies utilisez-vous ?",
+      "answer": "React/Next.js, Node.js/NestJS, React Native, Python, PostgreSQL, Docker.",
+      "order": 2
+    },
+    {
+      "id": 3,
+      "question": "Comment travaillons-nous ensemble ?",
+      "answer": "Sprints de 1-2 semaines avec points réguliers et approche collaborative.",
+      "order": 3
+    },
+    {
+      "id": 4,
+      "question": "Où êtes-vous basé ?",
+      "answer": "Abidjan, Côte d'Ivoire. Disponible en remote avec flexibilité horaire.",
+      "order": 4
+    },
+    {
+      "id": 5,
+      "question": "Votre approche sécurité ?",
+      "answer": "Security-first : chaque projet intègre la sécurité dès la conception.",
+      "order": 5
+    }
+  ]
+}

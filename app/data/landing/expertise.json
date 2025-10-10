@@ -1,0 +1,20 @@
+{
+  "title": "Ce que je fais",
+  "subtitle": "Mes domaines d'expertise",
+  "items": [
+    {
+      "id": 1,
+      "title": "Développement Full-Stack",
+      "description": "Applications web et mobiles sécurisées avec React, Node.js, React Native",
+      "image": "/image/design/fullstack.jpg",
+      "skills": ["REACT", "NODE.JS", "TYPESCRIPT", "REACT-NATIVE", "NESTJS"]
+    },
+    {
+      "id": 2,
+      "title": "Cybersécurité",
+      "description": "Audit de sécurité, tests de pénétration et architecture sécurisée",
+      "image": "/image/design/security.jpg",
+      "skills": ["OWASP", "PEN-TESTING", "CRYPTOGRAPHIE", "AUDIT-SECURITE"]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "quote": "Jean-Christophe allie parfaitement expertise technique et vision produit.",
+      "author": "Partenaire KOTA",
+      "role": "Co-fondateur",
+      "company": "KOTA"
+    },
+    {
+      "id": 2,
+      "quote": "Approche security-first remarquable et livraison impeccable.",
+      "author": "Client WebShield",
+      "role": "CTO",
+      "company": "TechCorp"
+    },
+    {
+      "id": 3,
+      "quote": "Developer talentueux avec une vraie vision business.",
+      "author": "Mentor INPHB",
+      "role": "Professeur",
+      "company": "INPHB"
+    }
+  ]
+}

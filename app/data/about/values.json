@@ -1,0 +1,21 @@
+{
+  "title": "Mes valeurs",
+  "items": [
+    {
+      "title": "Security-First",
+      "description": "Chaque produit doit intégrer la sécurité dès sa conception, pas après"
+    },
+    {
+      "title": "Impact Africain",
+      "description": "Créer des solutions qui résolvent les vrais défis du continent africain"
+    },
+    {
+      "title": "Excellence Technique",
+      "description": "Code propre, architecture solide et performance optimale"
+    },
+    {
+      "title": "Innovation Responsable",
+      "description": "Utiliser la technologie pour créer un avenir meilleur et durable"
+    }
+  ]
+}

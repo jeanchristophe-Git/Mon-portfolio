@@ -1,0 +1,21 @@
+{
+  "title": "Le monde que je vois",
+  "description": "Inspiration visuelle et exploration créative",
+  "images": [
+    {
+      "id": 1,
+      "src": "/image/design/journal-1.jpg",
+      "alt": "Vision créative 1"
+    },
+    {
+      "id": 2,
+      "src": "/image/design/journal-2.jpg",
+      "alt": "Vision créative 2"
+    },
+    {
+      "id": 3,
+      "src": "/image/design/journal-3.jpg",
+      "alt": "Vision créative 3"
+    }
+  ]
+}

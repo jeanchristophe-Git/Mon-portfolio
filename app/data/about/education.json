@@ -1,0 +1,36 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "institution": "Institut National Polytechnique Houphouët-Boigny (INPHB)",
+      "degree": "Master en Sciences et Cybersécurité en Intelligence Artificielle (MSCIA)",
+      "field": "Cybersécurité & IA",
+      "startYear": 2022,
+      "endYear": 2024,
+      "displayPeriod": "2022 – 2024",
+      "achievements": [
+        "Spécialisation en cybersécurité appliquée à l'intelligence artificielle",
+        "Projet de fin d'études : WebShield AI - Solution de détection d'intrusions basée sur l'IA",
+        "Major de promotion avec mention très bien"
+      ],
+      "type": "master",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "institution": "Institut National Polytechnique Houphouët-Boigny (INPHB)",
+      "degree": "Licence en Génie Informatique",
+      "field": "Informatique & Réseaux",
+      "startYear": 2019,
+      "endYear": 2022,
+      "displayPeriod": "2019 – 2022",
+      "achievements": [
+        "Formation complète en développement logiciel et réseaux informatiques",
+        "Projet notable : Système de gestion scolaire avec architecture microservices",
+        "Président du club informatique de l'école"
+      ],
+      "type": "licence",
+      "featured": true
+    }
+  ]
+}

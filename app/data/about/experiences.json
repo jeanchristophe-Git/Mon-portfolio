@@ -1,0 +1,38 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "company": "KOTA",
+      "location": "Abidjan, Côte d'Ivoire",
+      "role": "Co-fondateur & CTO",
+      "startDate": "2023-01-01",
+      "endDate": null,
+      "dateDisplay": "JAN 2023 - PRÉSENT",
+      "contractType": "STARTUP",
+      "workMode": "HYBRIDE",
+      "responsibilities": [
+        "Architecture et développement de l'application mobile de tontine moderne",
+        "Implémentation de la sécurité blockchain et cryptographie avancée",
+        "Management de l'équipe technique et définition de la roadmap produit"
+      ],
+      "featured": true
+    },
+    {
+      "id": 2,
+      "company": "Freelance",
+      "location": "Abidjan, Côte d'Ivoire",
+      "role": "Développeur Full-Stack & Security Consultant",
+      "startDate": "2022-01-01",
+      "endDate": "2023-12-31",
+      "dateDisplay": "JAN 2022 - DÉC 2023",
+      "contractType": "FREELANCE",
+      "workMode": "REMOTE",
+      "responsibilities": [
+        "Développement d'applications web et mobiles sécurisées",
+        "Audits de sécurité et tests de pénétration",
+        "Conseil en architecture technique et cybersécurité"
+      ],
+      "featured": true
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "title": "Certified Ethical Hacker (CEH)",
+      "issuer": "EC-Council",
+      "url": "https://www.eccouncil.org",
+      "category": "Cybersécurité",
+      "year": 2024,
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "AWS Solutions Architect",
+      "issuer": "Amazon Web Services",
+      "url": "https://aws.amazon.com",
+      "category": "Cloud Computing",
+      "year": 2023,
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "React Native Development",
+      "issuer": "Meta",
+      "url": "https://developers.facebook.com",
+      "category": "Développement Mobile",
+      "year": 2023,
+      "featured": true
+    }
+  ]
+}

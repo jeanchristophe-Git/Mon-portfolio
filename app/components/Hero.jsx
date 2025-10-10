@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import landingData from "../data/landing.json";
+import heroData from "../data/landing/hero.json";
+import profileData from "../data/personal/profile.json";
 
 export default function Hero({ onJump }) {
-  const { hero, personal } = landingData;
+  const hero = heroData;
+  const personal = profileData;
   
   return (
     <section id="home" className="section_home_header hero">
