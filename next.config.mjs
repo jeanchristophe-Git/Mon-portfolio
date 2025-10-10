@@ -91,8 +91,7 @@ const nextConfig = {
   experimental: {
     // Tree shaking agressif pour les icônes
     optimizePackageImports: ['lucide-react'],
-    // Optimisation des bundles de production
-    optimizeCss: true,
+    // Note: optimizeCss désactivé car nécessite 'critters' (utilise cssnano à la place)
   },
   
   // Minification et optimisation en production
