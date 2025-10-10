@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 
 // Composants principaux
-import BackgroundNoise from "./components/BackgroundNoise";
 import PillNavbar from "./components/PillNavbar";
 import Hero from "./components/Hero";
 import AboutSection from "./components/AboutSection";
@@ -12,7 +11,6 @@ import AboutSection from "./components/AboutSection";
 // Composants avec chargement différé pour la performance
 const Expertise = dynamic(() => import("./components/Expertise"));
 const Projects = dynamic(() => import("./components/Projects"));
-const Playground = dynamic(() => import("./components/Playground"));
 const Testimonials = dynamic(() => import("./components/Testimonials"));
 const Contact = dynamic(() => import("./components/Contact"));
 const FAQSection = dynamic(() => import("./components/FAQSection"));
@@ -26,7 +24,7 @@ export default function PortfolioMain() {
 
   // Système de scroll-spy pour tracker la section active
   useEffect(() => {
-    const sectionIds = ["home", "about", "expertise", "work", "playground", "testimonials", "contact", "faq"];
+    const sectionIds = ["home", "about", "expertise", "work", "testimonials", "contact", "faq"];
     
     let ticking = false;
     const sectionElements = sectionIds
@@ -72,14 +70,6 @@ export default function PortfolioMain() {
 
   return (
     <div className="min-h-screen bg-[#0b0b0b] text-zinc-200">
-      
-      <BackgroundNoise 
-        type="image"
-        imageUrl="/film-grain.jpg"
-        opacity={0.4}
-      />
-      
-      
       <PillNavbar 
         active={activeSection}
         onJump={navigateToSection}
@@ -87,15 +77,16 @@ export default function PortfolioMain() {
         setOpen={setMobileMenuOpen}
       />
       
-      <main className="mx-auto max-w-7xl">
+      <main>
         <Hero onJump={navigateToSection} />
-        <AboutSection />
-        <Expertise />
-        <Projects />
-        <Playground />
-        <Testimonials />
-        <Contact />
-        <FAQSection />
+        <div className="mx-auto max-w-7xl">
+          <AboutSection />
+          <Expertise />
+          <Projects />
+          <Testimonials />
+          <Contact />
+          <FAQSection />
+        </div>
       </main>
       
       <SiteFooter />

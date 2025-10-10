@@ -1,12 +1,17 @@
 {
+  "// =================== PROFILE SECTION ===================": "Image et informations de base",
   "profile": {
     "image": "/image/me/jeanchristophebogbe.png"
   },
+  
+  "// =================== HERO SECTION ===================": "Section principale de la page À propos",
   "hero": {
     "title": "À propos de moi",
     "subtitle": "Jean Christophe Bogbé",
     "description": "Je conçois des solutions numériques sécurisées et accessibles. J'attache une valeur particulière à la clarté, à la fiabilité et à l'impact durable."
   },
+  
+  "// =================== EXPERIENCE SECTION ===================": "Accordéon des expériences professionnelles",
   "experiences": [
     {
       "id": 1,
@@ -43,6 +48,8 @@
       "featured": true
     }
   ],
+  
+  "// =================== EDUCATION SECTION ===================": "Accordéon des formations et diplômes",
   "education": [
     {
       "id": 1,
@@ -77,6 +84,8 @@
       "featured": true
     }
   ],
+  
+  "// =================== CERTIFICATIONS SECTION ===================": "Accordéon des licences et certifications",
   "certifications": [
     {
       "id": 1,
@@ -106,6 +115,8 @@
       "featured": true
     }
   ],
+  
+  "// =================== SKILLS SECTION ===================": "Section outils et technologies",
   "skills": {
     "title": "Mes compétences",
     "categories": [
@@ -127,6 +138,8 @@
       }
     ]
   },
+  
+  "// =================== VALUES SECTION ===================": "Section My Beliefs - valeurs personnelles",
   "values": {
     "title": "Mes valeurs",
     "items": [

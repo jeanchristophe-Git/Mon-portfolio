@@ -1,179 +1,222 @@
-/**
- * Composant PillNavbar - Barre de navigation en forme de pilule
- * 
- * Navigation sticky avec design en pilule arrondie, centrée en haut de la page
- * Gère l'état actif, navigation smooth scroll et menu mobile
- * 
- * Props:
- * - active: string - ID de la section actuellement active
- * - onJump: function - Callback pour naviguer vers une section
- * - open: boolean - État d'ouverture du menu mobile
- * - setOpen: function - Fonction pour modifier l'état du menu mobile
- * 
- * Caractéristiques:
- * - Design responsive (desktop pill / mobile hamburger)
- * - Backdrop blur pour transparence
- * - Indicateur actif avec animation
- * - Menu mobile en overlay
- */
+"use client";
 
+import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import landingData from "../data/landing.json";
 
 const NAV_ITEMS = [
-  { id: "home", label: "acceuil" },
-  { id: "expertise", label: "travaux" },
-  { id: "about", label: "A propos", isExternal: true, href: "/about" },
-  { id: "resume", label: "curriculum vitae ↗" },
+  { id: "home", label: "Accueil" },
+  { id: "expertise", label: "Expertise" },
+  { id: "work", label: "Projets" },
+  { id: "about", label: "À propos", isExternal: true, href: "/about" },
+  { id: "playground", label: "Playground", isExternal: true, href: "/playground" },
 ];
 
 export default function PillNavbar({ active, onJump, open, setOpen }) {
+  const { personal, navigation } = landingData;
+  
   return (
-    <header className="sticky top-4 z-50">
-      <div className="mx-auto flex max-w-[940px] items-center justify-center px-4">
-        
-        {/* Version Desktop - Navigation en pilule */}
-        <div className="relative hidden w-full items-center justify-between rounded-[28px] border border-white/10 bg-black/70 px-4 py-1.5 text-sm backdrop-blur md:flex shadow-[inset_0_1px_0_rgba(255,255,255,.04),inset_0_-1px_0_rgba(255,255,255,.06)]">
+    <motion.header 
+      className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-zinc-800/50"
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="flex h-16 items-center justify-between">
           
-          {/* Logo/Nom */}
-          <a 
+          {/* Logo/Brand */}
+          <motion.a 
             href="/"
-            className="rounded-full bg-white px-3 py-1 font-semibold text-black text-decoration-none"
+            className="text-lg font-bold text-white hover:text-zinc-300 transition-colors"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            JCB.
-          </a>
+            {personal.brand}
+          </motion.a>
           
-          {/* Navigation principale */}
-          <nav className="flex items-center gap-7">
-            {NAV_ITEMS.map((navItem) => {
-              // Gestion des liens externes vs navigation interne
+          {/* Navigation Desktop */}
+          <nav className="hidden md:flex items-center space-x-8">
+            {NAV_ITEMS.map((navItem, index) => {
               if (navItem.isExternal) {
                 return (
-                  <a
+                  <motion.a
                     key={navItem.id}
                     href={navItem.href}
-                    className="relative pb-1 transition-opacity opacity-70 hover:opacity-100"
+                    className="text-sm text-zinc-400 hover:text-white transition-colors"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.3 }}
                   >
                     {navItem.label}
-                  </a>
+                  </motion.a>
                 );
               }
               
-              const targetId = navItem.id === "resume" ? "contact" : navItem.id;
-              const isActive = active === targetId;
+              const isActive = active === navItem.id;
               
               return (
-                <button
+                <motion.button
                   key={navItem.id}
-                  onClick={() => onJump(targetId)}
-                  className={`relative pb-1 transition-opacity hover:opacity-100 ${
-                    isActive ? "opacity-100" : "opacity-70"
+                  onClick={() => onJump(navItem.id)}
+                  className={`relative text-sm transition-colors ${
+                    isActive ? "text-white" : "text-zinc-400 hover:text-white"
                   }`}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.3 }}
                 >
                   {navItem.label}
-                  {/* Indicateur de section active */}
-                  <span 
-                    className={`pointer-events-none absolute -bottom-1 left-1/2 h-[3px] w-1 -translate-x-1/2 rounded-full bg-white/90 transition-opacity ${
-                      isActive ? "opacity-90" : "opacity-0"
-                    }`}
-                  />
-                </button>
+                  {isActive && (
+                    <motion.div
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white rounded-full"
+                      layoutId="activeIndicator"
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  )}
+                </motion.button>
               );
             })}
           </nav>
           
-          {/* Bouton Contact avec gradient */}
-          <button 
+          {/* Bouton Contact Desktop */}
+          <motion.button 
             onClick={() => onJump("contact")} 
-            className="rounded-full bg-[linear-gradient(180deg,#1ea1ff,#0b61ff)] px-4 py-2 font-semibold text-white shadow-[0_10px_24px_rgba(13,97,255,.35)] ring-1 ring-white/20"
+            className="hidden md:flex rounded-full bg-white px-6 py-2 text-sm font-medium text-black hover:bg-zinc-100 transition-colors"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, duration: 0.3 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             Contact
-          </button>
-        </div>
-        
-        {/* Version Mobile - Barre compacte */}
-        <div className="flex w-full items-center justify-between rounded-2xl border border-white/10 bg-black/70 px-3 py-2 backdrop-blur md:hidden">
-          <a 
-            href="/"
-            className="rounded bg-white px-2 py-1 text-xs font-semibold text-black text-decoration-none"
-          >
-            JCB.
-          </a>
-          <button 
+          </motion.button>
+          
+          {/* Bouton Menu Mobile */}
+          <motion.button 
             onClick={() => setOpen(true)} 
-            className="rounded-lg p-2 text-white/80" 
+            className="md:hidden rounded-lg p-2 text-zinc-400 hover:text-white transition-colors" 
             aria-label="Open menu"
+            initial={{ opacity: 0, rotate: -90 }}
+            animate={{ opacity: 1, rotate: 0 }}
+            transition={{ delay: 0.3, duration: 0.3 }}
           >
             <Menu className="h-5 w-5"/>
-          </button>
+          </motion.button>
         </div>
       </div>
 
       {/* Menu Mobile - Overlay */}
       {open && (
-        <div className="fixed inset-0 z-50 md:hidden">
+        <motion.div 
+          className="fixed inset-0 z-50 md:hidden"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+        >
           {/* Backdrop */}
-          <div 
-            className="absolute inset-0 bg-black/60" 
-            onClick={() => setOpen(false)} 
+          <motion.div 
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm" 
+            onClick={() => setOpen(false)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
           />
           
           {/* Panel du menu */}
-          <div className="absolute inset-x-0 bottom-0 rounded-t-2xl border border-white/10 bg-[#111] p-4">
-            
+          <motion.div 
+            className="absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-zinc-900 border-l border-zinc-800"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+          >
             {/* Header du menu mobile */}
-            <div className="mb-2 flex items-center justify-between">
-              <a 
-                href="/"
-                className="rounded bg-white px-2 py-1 text-xs font-semibold text-black text-decoration-none"
-              >
-               JCB.
-              </a>
-              <button 
+            <div className="flex h-16 items-center justify-between px-6 border-b border-zinc-800">
+              <span className="text-lg font-bold text-white">
+                {personal.brand}
+              </span>
+              <motion.button 
                 onClick={() => setOpen(false)} 
-                className="rounded-lg p-2 hover:bg-white/5"
+                className="rounded-lg p-2 text-zinc-400 hover:text-white transition-colors"
+                whileHover={{ rotate: 90 }}
+                whileTap={{ scale: 0.9 }}
               >
                 <X className="h-5 w-5"/>
-              </button>
+              </motion.button>
             </div>
             
             {/* Navigation mobile */}
-            <nav className="grid gap-1 text-sm">
-              {NAV_ITEMS.map((navItem) => {
-                // Gestion des liens externes vs navigation interne pour mobile
-                if (navItem.isExternal) {
+            <div className="p-6">
+              <nav className="space-y-4">
+                {NAV_ITEMS.map((navItem, index) => {
+                  if (navItem.isExternal) {
+                    return (
+                      <motion.a 
+                        key={navItem.id} 
+                        href={navItem.href}
+                        className="block py-3 text-lg text-zinc-300 hover:text-white transition-colors border-b border-zinc-800/50"
+                        initial={{ x: 50, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: index * 0.1, duration: 0.3 }}
+                        onClick={() => setOpen(false)}
+                      >
+                        {navItem.label}
+                      </motion.a>
+                    );
+                  }
+                  
+                  const isActive = active === navItem.id;
+                  
                   return (
-                    <a 
+                    <motion.button 
                       key={navItem.id} 
-                      href={navItem.href}
-                      className="rounded-lg px-2 py-2 text-left hover:bg-white/5"
+                      onClick={() => {
+                        onJump(navItem.id);
+                        setOpen(false);
+                      }} 
+                      className={`block w-full py-3 text-left text-lg transition-colors border-b border-zinc-800/50 ${
+                        isActive ? "text-white" : "text-zinc-300 hover:text-white"
+                      }`}
+                      initial={{ x: 50, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: index * 0.1, duration: 0.3 }}
                     >
                       {navItem.label}
-                    </a>
+                      {isActive && (
+                        <motion.div
+                          className="mt-1 h-0.5 bg-white rounded-full"
+                          initial={{ scaleX: 0 }}
+                          animate={{ scaleX: 1 }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      )}
+                    </motion.button>
                   );
-                }
-                
-                return (
-                  <button 
-                    key={navItem.id} 
-                    onClick={() => onJump(navItem.id === "resume" ? "contact" : navItem.id)} 
-                    className="rounded-lg px-2 py-2 text-left hover:bg-white/5"
-                  >
-                    {navItem.label}
-                  </button>
-                );
-              })}
+                })}
+              </nav>
               
               {/* Bouton Contact mobile */}
-              <button 
-                onClick={() => onJump("contact")} 
-                className="mt-2 inline-flex items-center justify-center rounded-full bg-[linear-gradient(180deg,#1ea1ff,#0b61ff)] px-4 py-2 font-semibold text-white ring-1 ring-white/20"
+              <motion.button 
+                onClick={() => {
+                  onJump("contact");
+                  setOpen(false);
+                }} 
+                className="mt-8 w-full rounded-full bg-white px-6 py-3 font-medium text-black hover:bg-zinc-100 transition-colors"
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.4, duration: 0.3 }}
+                whileTap={{ scale: 0.95 }}
               >
                 Contact
-              </button>
-            </nav>
-          </div>
-        </div>
+              </motion.button>
+            </div>
+          </motion.div>
+        </motion.div>
       )}
-    </header>
+    </motion.header>
   );
 }

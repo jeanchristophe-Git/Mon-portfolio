@@ -2,6 +2,7 @@
 
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "./dinidu-styles.css";
 
 // Configuration des polices
 const geistSans = Geist({
@@ -135,7 +136,7 @@ export default function RootLayout({ children }) {
         <link rel="manifest" href="/manifest.json" />
       </head>
       
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0b0b0b] text-zinc-200 px-10 `}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased text-zinc-200`}>
         {/* Conteneur principal avec largeur optimisée */}
         <div className="relative min-h-screen">
           {children}

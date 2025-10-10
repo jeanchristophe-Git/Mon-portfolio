@@ -8,6 +8,7 @@ import {
   Download,
   ExternalLink,
   Plus,
+  Minus,
   Calendar,
   Globe,
   GraduationCap,
@@ -19,65 +20,55 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-// Import des composants et données
+// =================== IMPORTS ===================
 import PillNavbar from "../components/PillNavbar";
-import BackgroundNoise from "../components/BackgroundNoise";
-import aboutData from "../data/about.json";
+import aboutData from "../data/about.json"; // JSON structure: profile, hero, experiences, education, certifications, skills, values
 import SiteFooter from "../components/SiteFooter";
 
-// Composants utilitaires
-const NoiseLayer = ({ radius = 16 }) => {
-  const NOISE_URI = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.06'/></svg>`;
-  
-  return (
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0"
-      style={{ 
-        backgroundImage: `url(${NOISE_URI})`, 
-        backgroundSize: "120px 120px", 
-        borderRadius: radius 
-      }}
-    />
-  );
-};
-
-const Tag = ({ label }) => (
-  <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-medium tracking-wide text-white/85">
-    {label}
-  </span>
-);
-
-const Accordion = ({ title, children, defaultOpen = false }) => {
+// =================== ACCORDION COMPONENT ===================
+// Composant Accordion réutilisable pour Experience, Education, Certifications
+const CVAccordion = ({ title, children, defaultOpen = false, isLast = false }) => {
   const [open, setOpen] = useState(defaultOpen);
   
   return (
-    <section className="overflow-hidden rounded-2xl border border-white/10 bg-black/50">
-      <button
+    <div className={`about_cv_accordion ${isLast ? 'is-last' : ''}`}>
+      <motion.div 
+        className="about_cv-description"
         onClick={() => setOpen(!open)}
-        className="group flex w-full items-center justify-between px-5 py-4 text-left"
+        whileHover={{ backgroundColor: "rgba(255,255,255,0.05)" }}
       >
-        <h3 className="text-2xl font-semibold tracking-tight text-white md:text-[28px]">
-          {title}
-        </h3>
-        <span className={`flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/80 transition ${open ? "rotate-45" : ""}`}>
-          <Plus className="h-4 w-4" />
-        </span>
-      </button>
+        <h3 className="heading-style-h5 text-color-white">{title}</h3>
+        <div className="plus-icon">
+          {open ? <Minus className="h-5 w-5" /> : <Plus className="h-5 w-5" />}
+        </div>
+      </motion.div>
       
-      {open && (
-        <div className="px-5 pb-5 md:px-6 md:pb-6">
+      <motion.div 
+        className="about_cv_list-wrapper"
+        initial={{ height: 0 }}
+        animate={{ height: open ? "auto" : 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        style={{ overflow: "hidden" }}
+      >
+        <div className="about_cv_list">
           {children}
         </div>
-      )}
-    </section>
+      </motion.div>
+    </div>
   );
 };
 
+// =================== MAIN ABOUT PAGE COMPONENT ===================
+// Page Structure:
+// 1. Hero Section - Title and profile intro
+// 2. CV Section - Experience, Education, Certifications (Accordions)
+// 3. Tools Section - Technologies and skills grid
+// 4. About Myself Section - Image + My Beliefs
 export default function AboutPage() {
   const [activeSection, setActiveSection] = useState("about");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Navigation handler - redirects to home or other sections
   const navigateToSection = (sectionId) => {
     if (sectionId === "home") {
       window.location.href = "/";
@@ -88,8 +79,6 @@ export default function AboutPage() {
 
   return (
     <div className="relative min-h-screen bg-[#0A0A0C] text-white">
-      <BackgroundNoise type="image" imageUrl="/film-grain.jpg" opacity={0.4} />
-
       <PillNavbar 
         active={activeSection}
         onJump={navigateToSection}
@@ -97,150 +86,318 @@ export default function AboutPage() {
         setOpen={setMobileMenuOpen}
       />
 
-      <main className="mx-auto mt-20 max-w-6xl px-10 md:px-6 md:mt-32">
+      <main>
         
-        {/* Section Hero */}
-        <section className="relative grid gap-6 rounded-3xl border border-white/10 bg-black/60 p-6 md:grid-cols-2 md:p-8">
-          <div className="relative flex flex-col justify-center">
-            <motion.h1 
-              initial={{ opacity: 0, y: 10 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              className="text-[38px] font-extrabold leading-[1.1] tracking-tight md:text-[44px]"
-            >
-              {aboutData.hero.title}
-            </motion.h1>
-            <h2 className="mt-2 text-lg text-white/80">{aboutData.hero.subtitle}</h2>
-            <p className="mt-4 max-w-xl text-sm/6 text-white/80 md:text-[15px]/7">
-              {aboutData.hero.description}
-            </p>
-          </div>
+        {/* =================== 1. HERO SECTION =================== */}
+        {/* Section d'introduction avec titre et description */}
+        <section className="section_about_hero">
+          <div className="padding-global">
+            <div className="container-large">
+              <div className="padding-section-medium is-hero">
+                <div className="header_component about">
+                  
+                  {/* Hero Title - Partie gauche */}
+                  <motion.div 
+                    className="hero-title"
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                  >
+                    <h1 className="about-title text-color-white">
+                      {aboutData.hero.title}
+                    </h1>
+                    <p className="text-color-grey mt-4">
+                      {aboutData.hero.description}
+                    </p>
+                    
+                    <div className="button-group is-padding-top-small mt-8">
+                      <a 
+                        href="/cv-jean-christophe-bogbe.pdf"
+                        target="_blank"
+                        className="button is-small w-button mr-4"
+                      >
+                        <Download className="h-4 w-4 mr-2" />
+                        Download CV
+                      </a>
+                      
+                      <a 
+                        href="https://dribbble.com/jcbogbe"
+                        target="_blank"
+                        className="dribbble_button"
+                      >
+                        <div className="dribbble_lottie">
+                          <motion.div 
+                            className="w-6 h-6 rounded-full bg-pink-500"
+                            animate={{ scale: [1, 1.1, 1] }}
+                            transition={{ repeat: Infinity, duration: 2 }}
+                          />
+                        </div>
+                        Dribbble
+                      </a>
+                    </div>
+                  </motion.div>
 
-          {/* Image portrait */}
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            className="aspect-[4/5] overflow-hidden rounded-2xl border border-white/12"
-          >
-            <Image
-              src={aboutData.profile.image} 
-              alt={aboutData.hero.subtitle} 
-              width={400}
-              height={400}
-              className="w-full h-full 
-              object-cover cursor-zoom-in " 
-              priority
-            />
-          </motion.div>
+                  {/* About Profile - Partie droite */}
+                  <motion.div 
+                    className="about_profile"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                  >
+                    <div className="image_profile">
+                      <Image
+                        src={aboutData.profile.image}
+                        alt={aboutData.hero.title}
+                        fill
+                        className="object-cover"
+                        priority
+                      />
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
-        {/* Sections Accordéon */}
-        <div className="mt-8 space-y-4">
-          
-          {/* Experience */}
-          <Accordion title="Expérience" defaultOpen={false}>
-            <div className="space-y-5">
-              {aboutData.experiences.map((exp, i) => (
-                <article key={i} className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 md:p-6">
-                  <div className="italic text-sm text-white/70">
-                    <span className="font-semibold not-italic text-white/90">{exp.company}</span> {exp.location}
-                  </div>
-                  <h4 className="mt-1 text-xl font-semibold text-white md:text-2xl">{exp.role}</h4>
-                  <div className="mt-3 flex flex-wrap items-center gap-2">
-                    <Tag label={exp.dateDisplay} />
-                    <Tag label={exp.contractType} />
-                    <Tag label={exp.workMode} />
-                  </div>
-                  <ul className="mt-4 space-y-2 text-[15px] leading-relaxed text-white/85">
-                    {exp.responsibilities.map((resp, j) => (
-                      <li key={j} className="list-disc pl-5">{resp}</li>
+        {/* =================== 2. CV SECTION =================== */}
+        {/* Accordéons: Expérience, Éducation, Certifications */}
+        <section className="section_about_cv">
+          <div className="padding-global">
+            <div className="container-large">
+              <div className="padding-section-medium fixed-top">
+                <div className="about_cv_component">
+                  
+                  {/* EXPERIENCE ACCORDION - aboutData.experiences */}
+                  <CVAccordion title="Experience" defaultOpen={false}>
+                    {aboutData.experiences.map((exp, i) => (
+                      <motion.div 
+                        key={i} 
+                        className="about_cv_item"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.1, duration: 0.6 }}
+                      >
+                        <div className="about_cv_item-content">
+                          <div className="about_cv_item-header">
+                            <h4 className="heading-style-h5 text-color-white">{exp.role}</h4>
+                            <div className="about_cv_item-meta text-color-grey">
+                              {exp.company} • {exp.dateDisplay}
+                            </div>
+                          </div>
+                          <div className="about_cv_item-description text-color-grey">
+                            {exp.responsibilities.map((resp, j) => (
+                              <p key={j}>{resp}</p>
+                            ))}
+                          </div>
+                        </div>
+                      </motion.div>
                     ))}
-                  </ul>
-                </article>
-              ))}
-            </div>
-          </Accordion>
+                  </CVAccordion>
 
-          {/* Formation */}
-          <Accordion title="Formation" defaultOpen={false}>
-            <div className="grid gap-5 md:grid-cols-2">
-              {aboutData.education.map((edu, i) => (
-                <article key={i} className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 md:p-6">
-                  <div className="flex items-center gap-2 text-sm text-white/80">
-                    <GraduationCap className="h-4 w-4" />
-                    {edu.institution}
-                  </div>
-                  <h4 className="mt-1 text-lg font-semibold text-white md:text-xl">{edu.degree}</h4>
-                  <div className="mt-2 text-xs text-white/70">
-                    <Calendar className="mr-1 inline h-3.5 w-3.5" />
-                    {edu.displayPeriod}
-                  </div>
-                  <ul className="mt-4 space-y-2 text-[15px] leading-relaxed text-white/85">
-                    {edu.achievements.map((achievement, k) => (
-                      <li key={k} className="list-disc pl-5">{achievement}</li>
+                  {/* EDUCATION ACCORDION - aboutData.education */}
+                  <CVAccordion title="Education">
+                    {aboutData.education.map((edu, i) => (
+                      <motion.div 
+                        key={i} 
+                        className="about_cv_item"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.1, duration: 0.6 }}
+                      >
+                        <div className="about_cv_item-content">
+                          <div className="about_cv_item-header">
+                            <h4 className="heading-style-h5 text-color-white">{edu.degree}</h4>
+                            <div className="about_cv_item-meta text-color-grey">
+                              {edu.institution} • {edu.displayPeriod}
+                            </div>
+                          </div>
+                          <div className="about_cv_item-description text-color-grey">
+                            {edu.achievements.map((achievement, j) => (
+                              <p key={j}>{achievement}</p>
+                            ))}
+                          </div>
+                        </div>
+                      </motion.div>
                     ))}
-                  </ul>
-                </article>
-              ))}
-            </div>
-          </Accordion>
+                  </CVAccordion>
 
-          {/* Certifications */}
-          <Accordion title="Certifications" defaultOpen={false}>
-            <div className="flex flex-wrap gap-2">
-              {aboutData.certifications.map((cert, i) => (
-                <Link 
-                  key={i} 
-                  href={cert.url} 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  className="group inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-3 py-1 text-xs font-medium text-white/85 hover:bg-white/10"
-                >
-                  <BadgeCheck className="h-3.5 w-3.5 opacity-80" />
-                  <span className="group-hover:underline">{cert.title}</span>
-                  <ExternalLink className="h-3.5 w-3.5 opacity-70" />
-                </Link>
-              ))}
-            </div>
-          </Accordion>
-
-          {/* Compétences */}
-          <Accordion title="Compétences" defaultOpen={false}>
-            <div className="grid gap-5 md:grid-cols-2">
-              {aboutData.skills.categories.map((category, i) => (
-                <div key={i} className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
-                  <h4 className="text-lg font-semibold text-white mb-3">{category.name}</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {category.items.map((skill, j) => (
-                      <span key={j} className="px-2 py-1 bg-white/10 rounded-full text-xs text-white/90">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
+                  {/* CERTIFICATIONS ACCORDION - aboutData.certifications */}
+                  <CVAccordion title="Licenses & certifications" isLast={true}>
+                    <div className="certificates-grid">
+                      {aboutData.certifications.map((cert, i) => (
+                        <motion.a
+                          key={i}
+                          href={cert.url}
+                          target="_blank"
+                          className="certificate-item"
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: i * 0.1, duration: 0.6 }}
+                          whileHover={{ scale: 1.02 }}
+                        >
+                          <div className="certificate-content">
+                            <h5 className="text-color-white">{cert.title}</h5>
+                            <div className="certificate-arrow">
+                              <ExternalLink className="h-4 w-4" />
+                            </div>
+                          </div>
+                        </motion.a>
+                      ))}
+                    </div>
+                  </CVAccordion>
                 </div>
-              ))}
+              </div>
             </div>
-          </Accordion>
+          </div>
+        </section>
 
-          {/* Valeurs */}
-          <Accordion title="Mes Valeurs" defaultOpen={false}>
-            <div className="grid gap-5 md:grid-cols-2">
-              {aboutData.values.items.map((value, i) => (
-                <div key={i} className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
-                  <h4 className="text-lg font-semibold text-white mb-2">{value.title}</h4>
-                  <p className="text-sm text-white/80">{value.description}</p>
+        {/* =================== 3. TOOLS SECTION =================== */}
+        {/* Grid des technologies et compétences - aboutData.skills */}
+        <section className="section_about_tools">
+          <div className="padding-global">
+            <div className="container-large">
+              <div className="padding-section-medium">
+                <h2 className="text-align-center text-color-white mb-12 heading-style-h3">
+                  Tools & Technologies
+                </h2>
+                
+                <div className="w-layout-grid logo_grid">
+                  {aboutData.skills.categories[0]?.items.slice(0, 8).map((skill, i) => (
+                    <motion.div 
+                      key={skill}
+                      className="logo_wrapper"
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: i * 0.1, duration: 0.6 }}
+                      viewport={{ once: true }}
+                    >
+                      <div className="logo_logo">
+                        <span className="text-color-grey text-sm">{skill}</span>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
-          </Accordion>
-        </div>
+          </div>
+        </section>
 
-          
-        {/* Footer du site */}
+        {/* =================== ABOUT MYSELF SECTION - IMPROVED LAYOUT =================== */}
+        <section className="section_about_myself">
+          <div className="padding-global">
+            <div className="container-large">
+              <div className="padding-section-medium">
+                <div className="about_myself_component">
+                  
+                  {/* CARD DECK EFFECT - Image avec cartes inclinées */}
+                  <motion.div 
+                    className="about_myself_image-wrapper"
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="card-deck">
+                      {/* Carte de gauche - inclinée vers la gauche */}
+                      <motion.div 
+                        className="card-left"
+                        initial={{ opacity: 0, rotate: -25 }}
+                        whileInView={{ opacity: 1, rotate: -15 }}
+                        transition={{ duration: 1, delay: 0.2 }}
+                        viewport={{ once: true }}
+                      >
+                        <Image
+                          src={aboutData.profile.image}
+                          alt="Card left"
+                          width={180}
+                          height={250}
+                          className="object-cover"
+                        />
+                      </motion.div>
 
-        <SiteFooter/>
+                      {/* Carte centrale - image principale */}
+                      <motion.div 
+                        className="card-center"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        viewport={{ once: true }}
+                      >
+                        <Image
+                          src={aboutData.profile.image}
+                          alt="Jean Christophe Bogbé"
+                          width={200}
+                          height={280}
+                          className="about_myself_image object-cover"
+                          priority
+                        />
+                      </motion.div>
 
-        <div className="h-10" />
+                      {/* Carte de droite - inclinée vers la droite */}
+                      <motion.div 
+                        className="card-right"
+                        initial={{ opacity: 0, rotate: 25 }}
+                        whileInView={{ opacity: 1, rotate: 15 }}
+                        transition={{ duration: 1, delay: 0.6 }}
+                        viewport={{ once: true }}
+                      >
+                        <Image
+                          src={aboutData.profile.image}
+                          alt="Card right"
+                          width={180}
+                          height={250}
+                          className="object-cover"
+                        />
+                      </motion.div>
+                    </div>
+                  </motion.div>
+
+                  {/* CONTENT - Right side with My Beliefs */}
+                  <motion.div 
+                    className="about_myself_content"
+                    initial={{ opacity: 0, x: 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    viewport={{ once: true }}
+                  >
+                    {/* Section Title */}
+                    <h2 className="about_myself_content h2">
+                      My Beliefs
+                    </h2>
+                    
+                    <p className="about_myself_content p">
+                      {aboutData.hero.description}
+                    </p>
+                    
+                    {/* Beliefs List - styled like Dinidu */}
+                    <div className="my_beliefs_list">
+                      {aboutData.values.items.map((value, i) => (
+                        <motion.div 
+                          key={i} 
+                          className="belief_item"
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ delay: i * 0.1, duration: 0.6 }}
+                          viewport={{ once: true }}
+                        >
+                          <BadgeCheck className="belief_icon h-5 w-5" />
+                          <div className="belief_content">
+                            <h4 className="belief_title">{value.title}</h4>
+                            <p className="belief_text">{value.description}</p>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
+
+      <SiteFooter/>
     </div>
   );
 }

@@ -45,7 +45,8 @@
         "tech": ["React Native", "NestJS", "TypeScript", "PostgreSQL"],
         "image": "/image/projet/kota.jpg",
         "category": "Mobile App",
-        "featured": true
+        "featured": true,
+        "slug": "kota"
       },
       {
         "id": 2,
@@ -54,7 +55,8 @@
         "tech": ["Python", "AI/ML", "Docker", "FastAPI"],
         "image": "/image/projet/webshield.jpg",
         "category": "Security Tool",
-        "featured": true
+        "featured": true,
+        "slug": "webshield"
       },
       {
         "id": 3,
@@ -63,7 +65,8 @@
         "tech": ["Next.js", "Tailwind", "Vercel"],
         "image": "/image/projet/portfolio.jpg",
         "category": "Website",
-        "featured": true
+        "featured": true,
+        "slug": "portfolio"
       }
     ]
   },

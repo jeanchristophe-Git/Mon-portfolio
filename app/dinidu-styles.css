@@ -1,0 +1,1678 @@
+/* Système de spacing exactement comme Dinidu Missaka */
+
+/* CSS Variables pour le spacing - exactement comme Dinidu */
+:root {
+  --size--0px: 0rem;
+  --size--4px: 0.25rem;
+  --size--8px: 0.5rem;
+  --size--16px: 1rem;
+  --size--24px: 1.5rem;
+  --size--32px: 2rem;
+  --size--48px: 3rem;
+  
+  /* Border colors - exactement comme Dinidu */
+  --border-color--border-secondary: #ffffff14;
+  --border-color--border-input: #ffffff20;
+  --border-color--border-line: #ffffff10;
+  
+  /* Background colors */
+  --background-color--background-black: #0a0a0c;
+  
+  /* IMPROVED TYPOGRAPHY & VISUAL HIERARCHY */
+  --text-primary: #ffffff;
+  --text-secondary: #e4e4e7;
+  --text-tertiary: #a1a1aa;
+  --text-muted: #71717a;
+  
+  /* Improved color palette */
+  --color-primary: #3b82f6;
+  --color-primary-dark: #1d4ed8;
+  --color-accent: #8b5cf6;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  
+  /* Surface colors */
+  --surface-primary: #18181b;
+  --surface-secondary: #27272a;
+  --surface-tertiary: #3f3f46;
+}
+
+/* Background Noise System - Exactement comme Dinidu */
+/* IMPROVED SECTION SPACING */
+.padding-section-medium {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .padding-section-medium {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.padding-section-large {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 768px) {
+  .padding-section-large {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+/* Hero Moving Section - Scroll horizontal exactement comme Dinidu */
+.moving-hero {
+  overflow: hidden;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.inside-moving-hero {
+  width: max-content;
+  overflow: hidden;
+}
+
+.hero-image {
+  flex-shrink: 0;
+  width: 16rem; /* 256px comme chez Dinidu */
+  height: 12rem; /* 192px */
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+/* Variables pour faciliter le changement de background */
+:root {
+  --bg-noise-image: url('/film-grain.jpg');
+  --bg-noise-opacity: 0.6; /* Plus visible */
+  --bg-noise-size: cover;
+  --bg-noise-blend: overlay; /* Meilleur blend pour visibilité */
+}
+
+body {
+  background-color: var(--background-color--background-black);
+  position: relative;
+}
+
+/* Noise texture overlay - facilement modifiable */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--bg-noise-image);
+  background-size: var(--bg-noise-size);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  opacity: var(--bg-noise-opacity);
+  mix-blend-mode: var(--bg-noise-blend);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Classes utilitaires pour changer facilement le background */
+.dinidu-background--film-grain {
+  --bg-noise-image: url('/film-grain.jpg');
+  --bg-noise-size: cover;
+  --bg-noise-opacity: 0.4;
+}
+
+.dinidu-background--svg-noise {
+  --bg-noise-image: url('/noise-texture.avif');
+  --bg-noise-size: 120px 120px;
+  --bg-noise-opacity: 0.05;
+}
+
+.dinidu-background--paper {
+  --bg-noise-image: url('/paper-texture.jpg');
+  --bg-noise-size: cover;
+  --bg-noise-opacity: 0.3;
+}
+
+/* IMPROVED CONTAINER SYSTEM - Better Spacing */
+.padding-global {
+  padding-left: 1.5rem;  /* Reduced from 2.5rem to 1.5rem */
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .padding-global {
+    padding-left: 2rem;    /* Moderate padding on tablets */
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .padding-global {
+    padding-left: 2.5rem;  /* Original padding only on large screens */
+    padding-right: 2.5rem;
+  }
+}
+
+.container-large {
+  max-width: 72rem; /* Increased from 64rem to 72rem for better content spread */
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.container-medium {
+  max-width: 60rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-small {
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Bordures verticales subtiles en dessous comme chez Dinidu */
+.container-large::before,
+.container-large::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: #ffffff08; /* Beaucoup moins visible */
+  z-index: -5; /* En dessous de tout */
+  pointer-events: none;
+}
+
+.container-large::before {
+  left: calc(50vw - 32rem); /* Gauche à la largeur du container */
+}
+
+.container-large::after {
+  right: calc(50vw - 32rem); /* Droite à la largeur du container */
+}
+
+.container-medium {
+  max-width: 60rem; /* 960px */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-small {
+  max-width: 48rem; /* 768px */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive Padding - Exactement comme Dinidu */
+@media (max-width: 991px) {
+  .padding-global {
+    padding-left: 1.25rem; /* 20px */
+    padding-right: 1.25rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .padding-global {
+    padding-left: 1rem; /* 16px */
+    padding-right: 1rem;
+  }
+}
+
+.padding-section-medium {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+/* Hero section */
+.section_home_header {
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+}
+
+.hero-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.max-width-large {
+  max-width: 768px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.animation_lottie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.align-centre {
+  text-align: center;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.is_fixed {
+  position: relative;
+}
+
+.text-color-grey {
+  color: #9ca3af;
+}
+
+.text-color-white {
+  color: #ffffff;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.hero-text {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-top: 1.5rem;
+}
+
+/* Moving hero carousel */
+.moving-hero {
+  margin-top: 3rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.inside-moving-hero {
+  display: flex;
+  gap: 1rem;
+}
+
+.hero-image {
+  width: 16rem;
+  height: 12rem;
+  border-radius: 1rem;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Button styles */
+.button-group {
+  margin-top: 2rem;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.is-small {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+}
+
+.w-button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.w-button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Services section */
+.section_home_services {
+  background-color: transparent;
+}
+
+.services_component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title .label {
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.section-title h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.service_component {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.services_card {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.services_card:hover {
+  transform: translateY(-4px);
+}
+
+.services_card-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.image-container {
+  margin-bottom: 1.5rem;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lottie_services {
+  width: 150px;
+  height: 150px;
+}
+
+.service_content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.services_card-content-bottom {
+  flex: 1;
+}
+
+.heading-style-h5 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.tag-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.tag-item {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  color: #d1d5db;
+  font-weight: 500;
+}
+
+/* Cases/Projects section */
+.section_home_cases {
+  background-color: transparent;
+}
+
+.cases_component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.project_component {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.layout_row_three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.service_card {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.service_card:hover {
+  transform: translateY(-4px);
+}
+
+/* Images plus grandes comme chez Dinidu */
+.sm-card-image {
+  width: 100%;
+  height: 320px; /* Plus grande pour être comme Dinidu */
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.service_card:hover .sm-card-image {
+  transform: scale(1.05);
+}
+
+.service_card-inner-content {
+  padding: 1.5rem;
+}
+
+.project-type {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.services_card-content-bottom {
+  margin-top: 1rem;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #d1d5db;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.link-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Disclaimer section - exactement comme Dinidu */
+.disclaimer-content {
+  text-align: center;
+  padding-top: 3rem;
+  padding-bottom: 1.5rem;
+}
+
+.text-color-snow {
+  color: #f8f9fa;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+/* MODERN BUTTON SYSTEM - Standardized Buttons */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.5s;
+}
+
+.button:hover::before {
+  left: 100%;
+}
+
+/* Primary Button */
+.button.is-primary {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.3);
+}
+
+.button.is-primary:hover {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px 0 rgba(59, 130, 246, 0.4);
+}
+
+/* Secondary Button */
+.button.is-secondary {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.button.is-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Small Button */
+.button.is-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
+}
+
+/* Dribbble/CV Button Specific */
+.button.is-download, .button.is-dribbble {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.3);
+}
+
+.button.is-download:hover, .button.is-dribbble:hover {
+  background: linear-gradient(135deg, #5b21b6, #7c3aed);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px 0 rgba(99, 102, 241, 0.4);
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Service Component Grid - Expertise section comme Dinidu */
+.service_component {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+  .service_component {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.services_card {
+  border-radius: 1rem;
+  background-color: #1a1a1a;
+  padding: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.services_card:hover {
+  transform: translateY(-4px);
+}
+
+.image-container {
+  margin-bottom: 2rem;
+}
+
+.lottie_services {
+  width: 100%;
+  height: 200px;
+  border-radius: 1rem;
+}
+
+.service_content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tag-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-item {
+  background-color: #374151;
+  color: #d1d5db;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* PROFILE IMAGE STYLING - Modern & Balanced */
+.image_profile {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 
+    0 0 0 4px rgba(59, 130, 246, 0.2),
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 0 50px rgba(59, 130, 246, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image_profile:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    0 0 0 6px rgba(59, 130, 246, 0.3),
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 80px rgba(59, 130, 246, 0.2);
+}
+
+.image_profile::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6, #06b6d4, #3b82f6);
+  border-radius: 50%;
+  z-index: -1;
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* About page profile image */
+.about_myself_image-wrapper {
+  position: relative;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.about_myself_image {
+  border-radius: 1.5rem;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about_myself_image:hover {
+  transform: scale(1.02) translateY(-5px);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Image to background blend */
+.about_myself_image-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 20px;
+  background: radial-gradient(ellipse, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+/* IMPROVED TYPOGRAPHY SYSTEM */
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-tertiary {
+  color: var(--text-tertiary);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+/* Enhanced heading styles */
+.heading-style-h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.heading-style-h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.heading-style-h3 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-secondary);
+}
+
+.heading-style-h5 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+/* Text alignment utilities */
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+/* Color utilities using new variables */
+.text-color-white {
+  color: var(--text-primary);
+}
+
+.text-color-grey {
+  color: var(--text-tertiary);
+}
+
+.text-color-snow {
+  color: var(--text-secondary);
+}
+
+/* Surface improvements */
+.surface-primary {
+  background-color: var(--surface-primary);
+}
+
+.surface-secondary {
+  background-color: var(--surface-secondary);
+}
+
+.surface-tertiary {
+  background-color: var(--surface-tertiary);
+}
+
+/* =================== ABOUT PAGE - ACCORDION STYLING =================== */
+/* Accordion container - exact spacing like Dinidu */
+.about_cv_accordion {
+  border-bottom: 1px solid var(--border-color--border-secondary);
+}
+
+.about_cv_accordion.is-last {
+  border-bottom: none;
+}
+
+/* Accordion header - avec proper padding */
+.about_cv-description {
+  display: flex;
+  align-items: center;
+  justify-content: between;
+  padding: 1.5rem 0; /* Espacement correct - pas collé aux bordures */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0.5rem;
+  margin: 0 -0.5rem; /* Pour compenser le padding et permettre le hover */
+}
+
+.about_cv-description:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.about_cv-description h3 {
+  flex: 1;
+  color: var(--text-primary);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.plus-icon {
+  color: var(--text-tertiary);
+  transition: all 0.3s ease;
+}
+
+.about_cv-description:hover .plus-icon {
+  color: var(--text-primary);
+  transform: scale(1.1);
+}
+
+/* Accordion content wrapper */
+.about_cv_list-wrapper {
+  overflow: hidden;
+}
+
+.about_cv_list {
+  padding: 0 0 1.5rem 0; /* Spacing en bas pour séparer du prochain item */
+}
+
+/* =================== ACCORDION ITEMS STYLING =================== */
+/* Individual CV items inside accordions */
+.about_cv_item {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-color--border-line);
+  transition: all 0.3s ease;
+}
+
+.about_cv_item:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border-color--border-secondary);
+  transform: translateY(-2px);
+}
+
+.about_cv_item:last-child {
+  margin-bottom: 0;
+}
+
+.about_cv_item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.about_cv_item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .about_cv_item-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+.about_cv_item h4 {
+  color: var(--text-primary);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.about_cv_item h5 {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0.25rem 0 0 0;
+  line-height: 1.3;
+}
+
+.about_cv_item .date-badge {
+  background: var(--color-primary);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.about_cv_item .responsibilities {
+  margin-top: 0.75rem;
+}
+
+.about_cv_item .responsibilities ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about_cv_item .responsibilities li {
+  color: var(--text-tertiary);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.about_cv_item .responsibilities li::before {
+  content: '•';
+  color: var(--color-primary);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: bold;
+}
+
+.about_cv_item .responsibilities li:last-child {
+  margin-bottom: 0;
+}
+
+/* Certificates grid styling */
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.certificate-item {
+  display: block;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-color--border-secondary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.certificate-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.1);
+}
+
+.certificate-item h4 {
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.certificate-item p {
+  color: var(--text-tertiary);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* About Myself Section - Layout avec effet jeu de cartes */
+.section_about_myself {
+  background-color: var(--surface-primary);
+}
+
+.about_myself_component {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Plus de place pour le texte */
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+  .about_myself_component {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+}
+
+/* =================== CARD DECK EFFECT =================== */
+.about_myself_image-wrapper {
+  position: relative;
+  justify-self: center;
+  width: 280px; /* Réduit de 400px à 280px */
+  height: 350px; /* Proportions de carte */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Card deck container */
+.card-deck {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main center card */
+.card-center {
+  position: relative;
+  width: 200px;
+  height: 280px;
+  border-radius: 1rem;
+  overflow: hidden;
+  z-index: 3;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-center:hover {
+  transform: scale(1.05) translateY(-10px);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Side cards */
+.card-left, .card-right {
+  position: absolute;
+  width: 180px;
+  height: 250px;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, 
+    rgba(59, 130, 246, 0.1), 
+    rgba(139, 92, 246, 0.1)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-left {
+  left: -40px;
+  top: 20px;
+  transform: rotate(-15deg);
+  z-index: 1;
+}
+
+.card-right {
+  right: -40px;
+  top: 20px;
+  transform: rotate(15deg);
+  z-index: 1;
+}
+
+/* Hover effect on deck */
+.card-deck:hover .card-left {
+  transform: rotate(-20deg) translateX(-10px);
+}
+
+.card-deck:hover .card-right {
+  transform: rotate(20deg) translateX(10px);
+}
+
+/* Side card images (same image but with overlay) */
+.card-left img, .card-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+}
+
+/* Card exchange animation */
+@keyframes cardShuffle {
+  0%, 100% { transform: rotate(-15deg); }
+  50% { transform: rotate(-10deg) scale(0.95); }
+}
+
+@keyframes cardShuffleRight {
+  0%, 100% { transform: rotate(15deg); }
+  50% { transform: rotate(10deg) scale(0.95); }
+}
+
+.card-left {
+  animation: cardShuffle 4s ease-in-out infinite;
+}
+
+.card-right {
+  animation: cardShuffleRight 4s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.about_myself_content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-left: 2rem;
+  padding-right: 1rem;
+  justify-content: center;
+  height: 100%;
+}
+
+.about_myself_content h2 {
+  color: var(--text-primary);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  margin-bottom: 1.5rem;
+}
+
+.about_myself_content p {
+  color: var(--text-tertiary);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  margin: 0;
+  margin-bottom: 2rem;
+}
+
+/* My Beliefs Section - bien aligné avec l'image */
+.my_beliefs_list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 0;
+}
+
+.belief_item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 0.875rem;
+  border: 1px solid var(--border-color--border-secondary);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.belief_item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--color-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+}
+
+.belief_icon {
+  color: var(--color-primary);
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+.belief_content {
+  flex: 1;
+}
+
+.belief_title {
+  color: var(--text-primary);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.4;
+}
+
+.belief_text {
+  color: var(--text-tertiary);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Fix justify-content typo */
+.about_cv-description {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Fixed typo from 'between' to 'space-between' */
+  padding: 1.5rem 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0.5rem;
+  margin: 0 -0.5rem;
+}
+
+/* Product cards - section mixte */
+.product_column {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.product_card-large {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.product_card-large:hover {
+  transform: translateY(-4px);
+}
+
+.product_card-large-content {
+  position: relative;
+  height: 100%;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product_background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.product_item {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.title-wrapper {
+  margin-bottom: 1rem;
+}
+
+.product_card-small {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  height: 100%;
+}
+
+.product_background-image-wrapper {
+  position: relative;
+  height: 60%;
+}
+
+.image-overlay-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.layout526_background-image {
+  width: 100%;
+  height: 100%;
+}
+
+.product_card-small-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  padding: 1.5rem;
+}
+
+.layout526_card-small-content-top {
+  height: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .padding-global {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .service_component {
+    grid-template-columns: 1fr;
+  }
+  
+  .layout_row_three {
+    grid-template-columns: 1fr;
+  }
+  
+  .product_column {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-title h2 {
+    font-size: 2rem;
+  }
+}
+
+/* About page styles */
+
+/* About Hero Section */
+.section_about_hero {
+  padding-top: 6rem;
+  background-color: transparent;
+}
+
+.is-hero {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.header_component.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.button-group.is-padding-top-small {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.dribbble_button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.dribbble_button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.about_profile {
+  position: relative;
+  aspect-ratio: 4/5;
+}
+
+.image_profile {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* CV Section */
+.section_about_cv {
+  background-color: transparent;
+}
+
+.fixed-top {
+  padding-top: 2rem;
+}
+
+.about_cv_component {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about_cv_accordion {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about_cv_accordion.is-last {
+  border-bottom: none;
+}
+
+.about_cv-description {
+  display: flex;
+  justify-content: between;
+  align-items: center;
+  padding: 2rem 0;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.about_cv-description:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.plus-icon {
+  color: rgba(255, 255, 255, 0.7);
+  margin-left: auto;
+}
+
+.about_cv_list-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.about_cv_list {
+  padding-bottom: 2rem;
+}
+
+.about_cv_item {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+}
+
+.about_cv_item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.about_cv_item-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.about_cv_item-meta {
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+.about_cv_item-description p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.certificate-item {
+  display: block;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.certificate-item:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.certificate-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.certificate-content h5 {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.certificate-arrow {
+  opacity: 0.7;
+}
+
+/* Tools Section */
+.section_about_tools {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.heading-style-h3 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.logo_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.logo_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.logo_wrapper:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.logo_logo {
+  text-align: center;
+}
+
+/* About Myself Section */
+.section_about_myself {
+  background-color: transparent;
+}
+
+.about_myself_component {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.about_myself_image-wrapper {
+  position: relative;
+}
+
+.about_myself_image {
+  width: 100%;
+  height: auto;
+  border-radius: 1.5rem;
+  object-fit: cover;
+}
+
+.about_myself_content {
+  display: flex;
+  flex-direction: column;
+}
+
+.belief-item {
+  margin-bottom: 2rem;
+}
+
+.belief-item h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.belief-item p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+@media (max-width: 640px) {
+  .hero-image {
+    width: 12rem;
+    height: 9rem;
+  }
+  
+  .section_home_header {
+    padding-top: 4rem;
+  }
+
+  .header_component.about {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-title {
+    font-size: 2.5rem;
+  }
+
+  .about_myself_component {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .logo_grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .button-group.is-padding-top-small {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
