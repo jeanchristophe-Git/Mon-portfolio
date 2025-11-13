@@ -1,0 +1,54 @@
+{
+  "title": "WebShield AI",
+  "subtitle": "Solution de cybersécurité basée sur l'intelligence artificielle",
+  "category": "Security Tool",
+  "year": "2024",
+  "client": "Enterprise",
+  "duration": "8 mois",
+  "role": "Security Engineer & AI Specialist",
+  "team": [
+    "Security Architect",
+    "ML Engineer",
+    "Backend Developer",
+    "DevOps Engineer"
+  ],
+  "description": "WebShield AI est une solution avancée de cybersécurité qui utilise l'intelligence artificielle pour détecter et prévenir les menaces en temps réel.\n\nLe système analyse le trafic web, identifie les patterns malveillants et réagit automatiquement pour protéger les applications web contre diverses attaques.",
+  "challenges": [
+    "Détection en temps réel des menaces sophistiquées",
+    "Réduction des faux positifs",
+    "Performance sur du trafic haute volume",
+    "Interface intuitive pour les équipes sécurité"
+  ],
+  "solutions": [
+    "Modèles ML optimisés pour la détection",
+    "Dashboard temps réel avec analytics",
+    "API d'intégration flexible",
+    "Système d'alertes intelligent"
+  ],
+  "tech": [
+    "Python",
+    "TensorFlow",
+    "FastAPI",
+    "Docker",
+    "Redis",
+    "Elasticsearch"
+  ],
+  "features": [
+    "Détection IA des menaces",
+    "Dashboard analytics",
+    "Alertes en temps réel",
+    "API d'intégration",
+    "Rapports automatisés",
+    "Machine Learning adaptatif"
+  ],
+  "images": [
+    "/image/projet/webshield-1.jpg",
+    "/image/projet/webshield-2.jpg",
+    "/image/projet/webshield-3.jpg"
+  ],
+  "mainImage": "/image/projet/webshield.jpg",
+  "links": {
+    "demo": "#",
+    "github": "#"
+  }
+}

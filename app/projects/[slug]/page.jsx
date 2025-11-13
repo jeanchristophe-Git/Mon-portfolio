@@ -4,181 +4,55 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import PillNavbar from "../../components/PillNavbar";
 import SiteFooter from "../../components/SiteFooter";
-import projectsData from "../../data/landing/projects.json";
 
-// Données des projets détaillées
+// Import des données de projets depuis JSON
+import kotaData from "../../data/projects/kota.json";
+import webshieldData from "../../data/projects/webshield.json";
+import portfolioData from "../../data/projects/portfolio.json";
+
+/**
+ * Mapping des données de projets
+ * Les données sont maintenant chargées depuis des fichiers JSON séparés
+ * pour faciliter la maintenance et la scalabilité
+ */
 const projectsDetails = {
-  "kota": {
-    title: "KOTA - App de Tontine",
-    subtitle: "Application révolutionnaire de tontine moderne pour l'Afrique",
-    category: "Mobile App",
-    year: "2024",
-    client: "Startup",
-    duration: "6 mois",
-    role: "Lead Developer & Product Designer",
-    team: ["Product Manager", "UI/UX Designer", "Backend Developer", "Mobile Developer"],
-    description: `KOTA révolutionne les tontines traditionnelles africaines en les digitalisant. Cette application mobile permet aux utilisateurs de créer, rejoindre et gérer des groupes de tontine avec une interface moderne et sécurisée.
-
-Le projet combine les valeurs culturelles africaines avec la technologie moderne pour créer une expérience utilisateur exceptionnelle. J'ai dirigé le développement frontend et l'architecture produit.`,
-    
-    challenges: [
-      "Adapter les pratiques traditionnelles aux technologies modernes",
-      "Créer une interface intuitive pour tous les âges",
-      "Assurer la sécurité des transactions financières",
-      "Gérer les notifications push pour les contributions"
-    ],
-    
-    solutions: [
-      "Interface bilingue français/langues locales",
-      "Système de notifications intelligent",
-      "Architecture sécurisée avec chiffrement end-to-end",
-      "Design system culturellement adapté"
-    ],
-    
-    tech: ["React Native", "NestJS", "TypeScript", "PostgreSQL", "Firebase"],
-    features: [
-      "Gestion de groupes de tontine",
-      "Système de paiement intégré",
-      "Notifications intelligentes",
-      "Chat groupe intégré",
-      "Historique complet des transactions",
-      "Mode offline"
-    ],
-    
-    images: [
-      "/image/projet/kota-1.jpg",
-      "/image/projet/kota-2.jpg", 
-      "/image/projet/kota-3.jpg"
-    ],
-    
-    mainImage: "/image/projet/kota.jpg",
-    links: {
-      demo: "#",
-      github: "#"
-    }
-  },
-  
-  "webshield": {
-    title: "WebShield AI",
-    subtitle: "Solution de cybersécurité basée sur l'intelligence artificielle",
-    category: "Security Tool",
-    year: "2024",
-    client: "Enterprise",
-    duration: "8 mois",
-    role: "Security Engineer & AI Specialist", 
-    team: ["Security Architect", "ML Engineer", "Backend Developer", "DevOps Engineer"],
-    description: `WebShield AI est une solution avancée de cybersécurité qui utilise l'intelligence artificielle pour détecter et prévenir les menaces en temps réel. 
-
-Le système analyse le trafic web, identifie les patterns malveillants et réagit automatiquement pour protéger les applications web contre diverses attaques.`,
-    
-    challenges: [
-      "Détection en temps réel des menaces sophistiquées",
-      "Réduction des faux positifs",
-      "Performance sur du trafic haute volume",
-      "Interface intuitive pour les équipes sécurité"
-    ],
-    
-    solutions: [
-      "Modèles ML optimisés pour la détection",
-      "Dashboard temps réel avec analytics",
-      "API d'intégration flexible", 
-      "Système d'alertes intelligent"
-    ],
-    
-    tech: ["Python", "TensorFlow", "FastAPI", "Docker", "Redis", "Elasticsearch"],
-    features: [
-      "Détection IA des menaces",
-      "Dashboard analytics",
-      "Alertes en temps réel",
-      "API d'intégration",
-      "Rapports automatisés",
-      "Machine Learning adaptatif"
-    ],
-    
-    images: [
-      "/image/projet/webshield-1.jpg",
-      "/image/projet/webshield-2.jpg",
-      "/image/projet/webshield-3.jpg"
-    ],
-    
-    mainImage: "/image/projet/webshield.jpg",
-    links: {
-      demo: "#",
-      github: "#"
-    }
-  },
-  
-  "portfolio": {
-    title: "Portfolio Personnel",
-    subtitle: "Portfolio moderne avec architecture sécurisée",
-    category: "Website", 
-    year: "2024",
-    client: "Personnel",
-    duration: "3 mois",
-    role: "Full-Stack Developer & Designer",
-    team: ["Designer", "Developer"],
-    description: `Mon portfolio personnel construit avec les dernières technologies web. Une vitrine de mes compétences en développement et design, optimisée pour les performances et l'accessibilité.
-
-Le site présente mes projets, compétences et expériences avec une approche modern et interactive.`,
-    
-    challenges: [
-      "Performance optimale sur tous les devices",
-      "SEO et accessibilité avancés", 
-      "Animations fluides sans impact performance",
-      "Design system cohérent et évolutif"
-    ],
-    
-    solutions: [
-      "Architecture Next.js optimisée",
-      "Animations Framer Motion performantes",
-      "Design system Tailwind personnalisé",
-      "Optimisations images et assets"
-    ],
-    
-    tech: ["Next.js", "Tailwind CSS", "Framer Motion", "Vercel"],
-    features: [
-      "Design responsive",
-      "Animations interactives", 
-      "Mode sombre",
-      "SEO optimisé",
-      "Performance 100/100",
-      "Accessibilité WCAG"
-    ],
-    
-    images: [
-      "/image/projet/portfolio-1.jpg",
-      "/image/projet/portfolio-2.jpg",
-      "/image/projet/portfolio-3.jpg"
-    ],
-    
-    mainImage: "/image/projet/portfolio.jpg",
-    links: {
-      demo: "/",
-      github: "#"
-    }
-  }
+  "kota": kotaData,
+  "webshield": webshieldData,
+  "portfolio": portfolioData
 };
 
+/**
+ * Page de détail d'un projet
+ * @param {Object} params - Paramètres de route Next.js
+ * @param {string} params.slug - Slug du projet (kota, webshield, portfolio)
+ */
 export default function ProjectPage({ params }) {
+  const router = useRouter();
   const [activeSection, setActiveSection] = useState("work");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
+
   const project = projectsDetails[params.slug];
-  
+
+  // Redirection 404 si le projet n'existe pas
   if (!project) {
     notFound();
   }
 
+  /**
+   * Navigation vers une section
+   * Utilise Next.js router au lieu de window.location pour de meilleures performances
+   * @param {string} sectionId - ID de la section cible
+   */
   const navigateToSection = (sectionId) => {
     if (sectionId === "home") {
-      window.location.href = "/";
+      router.push("/");
     } else {
-      window.location.href = `/#${sectionId}`;
+      router.push(`/#${sectionId}`);
     }
   };
 

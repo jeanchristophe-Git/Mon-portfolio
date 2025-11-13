@@ -70,14 +70,19 @@ export default function PortfolioMain() {
 
   return (
     <div className="min-h-screen bg-[#0b0b0b] text-zinc-200">
-      <PillNavbar 
+      {/* Skip to content link pour accessibilité clavier */}
+      <a href="#main-content" className="skip-to-content">
+        Aller au contenu principal
+      </a>
+
+      <PillNavbar
         active={activeSection}
         onJump={navigateToSection}
         open={mobileMenuOpen}
         setOpen={setMobileMenuOpen}
       />
-      
-      <main>
+
+      <main id="main-content">
         <Hero onJump={navigateToSection} />
         <div className="mx-auto max-w-7xl">
           <AboutSection />

@@ -4,10 +4,29 @@ import { motion } from "framer-motion";
 import heroData from "../data/landing/hero.json";
 import profileData from "../data/personal/profile.json";
 
+/**
+ * Composant Hero de la page d'accueil
+ * Affichage sécurisé du titre avec support des sauts de ligne
+ * @param {Function} onJump - Fonction de navigation vers une section
+ */
 export default function Hero({ onJump }) {
   const hero = heroData;
   const personal = profileData;
-  
+
+  /**
+   * Parse le titre en remplaçant les <br/> par des sauts de ligne JSX
+   * Alternative sécurisée à dangerouslySetInnerHTML
+   */
+  const renderTitle = () => {
+    const parts = hero.title.split('<br/>');
+    return parts.map((part, index) => (
+      <span key={index}>
+        {part}
+        {index < parts.length - 1 && <br />}
+      </span>
+    ));
+  };
+
   return (
     <section id="home" className="section_home_header hero">
       <div className="padding-global">
@@ -39,14 +58,15 @@ export default function Hero({ onJump }) {
                 </div>
               </div>
               
-              {/* Titre principal exactement comme Dinidu */}
-              <motion.h1 
+              {/* Titre principal - affichage sécurisé sans dangerouslySetInnerHTML */}
+              <motion.h1
                 className="text-align-center text-color-white text-4xl md:text-6xl lg:text-7xl font-bold mt-8"
-                dangerouslySetInnerHTML={{ __html: hero.title }}
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
-              />
+              >
+                {renderTitle()}
+              </motion.h1>
               
               {/* Description hero-text comme Dinidu */}
               <motion.p 

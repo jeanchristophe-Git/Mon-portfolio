@@ -121,6 +121,77 @@ export const viewport = {
   ]
 };
 
+// =================== STRUCTURED DATA FOR SEO ===================
+/**
+ * Structured Data JSON-LD pour améliorer le SEO et les rich snippets
+ * Conforme à schema.org pour Person et WebSite
+ */
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://jcbogbe.com/#person",
+      "name": "Jean-Christophe Bogbé",
+      "alternateName": "JC Bogbé",
+      "description": "Product-Minded Engineer et Cybersecurity Enthusiast basé à Abidjan, Côte d'Ivoire. Spécialisé en développement full-stack et solutions fintech africaines.",
+      "url": "https://jcbogbe.com",
+      "image": "https://jcbogbe.com/image/me/jeanchristophebogbe.png",
+      "sameAs": [
+        "https://www.linkedin.com/in/jcbogbe",
+        "https://github.com/jcbogbe",
+        "https://twitter.com/jcbogbe"
+      ],
+      "jobTitle": "Product-Minded Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "KOTA",
+        "url": "https://kota.ci"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Abidjan",
+        "addressCountry": "CI"
+      },
+      "knowsAbout": [
+        "Web Development",
+        "Cybersecurity",
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Fintech",
+        "Mobile Development",
+        "Product Engineering"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://jcbogbe.com/#website",
+      "url": "https://jcbogbe.com",
+      "name": "Jean-Christophe Bogbé Portfolio",
+      "description": "Portfolio personnel de Jean-Christophe Bogbé, Product Engineer et Cybersecurity Enthusiast",
+      "publisher": {
+        "@id": "https://jcbogbe.com/#person"
+      },
+      "inLanguage": "fr-FR"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://jcbogbe.com/#webpage",
+      "url": "https://jcbogbe.com",
+      "name": "Jean-Christophe Bogbé - Product-Minded Engineer",
+      "isPartOf": {
+        "@id": "https://jcbogbe.com/#website"
+      },
+      "about": {
+        "@id": "https://jcbogbe.com/#person"
+      },
+      "description": "Mid Product-Minded Engineer et Cybersecurity Enthusiast basé à Abidjan. Je crée des produits qui résolvent de vrais problèmes avec une approche security-first.",
+      "inLanguage": "fr-FR"
+    }
+  ]
+};
+
 // =================== LAYOUT PRINCIPAL ===================
 export default function RootLayout({ children }) {
   return (
@@ -129,11 +200,17 @@ export default function RootLayout({ children }) {
         {/* Preconnect pour les performances */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
+
         {/* Favicons */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
+
+        {/* Structured Data (JSON-LD) pour SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
       </head>
       
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased text-zinc-200`}>

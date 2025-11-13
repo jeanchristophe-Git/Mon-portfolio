@@ -1,0 +1,50 @@
+{
+  "title": "Portfolio Personnel",
+  "subtitle": "Portfolio moderne avec architecture sécurisée",
+  "category": "Website",
+  "year": "2024",
+  "client": "Personnel",
+  "duration": "3 mois",
+  "role": "Full-Stack Developer & Designer",
+  "team": [
+    "Designer",
+    "Developer"
+  ],
+  "description": "Mon portfolio personnel construit avec les dernières technologies web. Une vitrine de mes compétences en développement et design, optimisée pour les performances et l'accessibilité.\n\nLe site présente mes projets, compétences et expériences avec une approche moderne et interactive.",
+  "challenges": [
+    "Performance optimale sur tous les devices",
+    "SEO et accessibilité avancés",
+    "Animations fluides sans impact performance",
+    "Design system cohérent et évolutif"
+  ],
+  "solutions": [
+    "Architecture Next.js optimisée",
+    "Animations Framer Motion performantes",
+    "Design system Tailwind personnalisé",
+    "Optimisations images et assets"
+  ],
+  "tech": [
+    "Next.js",
+    "Tailwind CSS",
+    "Framer Motion",
+    "Vercel"
+  ],
+  "features": [
+    "Design responsive",
+    "Animations interactives",
+    "Mode sombre",
+    "SEO optimisé",
+    "Performance 100/100",
+    "Accessibilité WCAG"
+  ],
+  "images": [
+    "/image/projet/portfolio-1.jpg",
+    "/image/projet/portfolio-2.jpg",
+    "/image/projet/portfolio-3.jpg"
+  ],
+  "mainImage": "/image/projet/portfolio.jpg",
+  "links": {
+    "demo": "/",
+    "github": "#"
+  }
+}

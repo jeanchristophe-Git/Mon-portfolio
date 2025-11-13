@@ -110,26 +110,30 @@ export default function PillNavbar({ active, onJump, open, setOpen }) {
         </div>
       </div>
 
-      {/* Menu Mobile - Overlay */}
+      {/* Menu Mobile - Overlay avec accessibilité améliorée */}
       {open && (
-        <motion.div 
+        <motion.div
           className="fixed inset-0 z-50 md:hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu de navigation"
         >
           {/* Backdrop */}
-          <motion.div 
-            className="absolute inset-0 bg-black/40 backdrop-blur-sm" 
+          <motion.div
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             onClick={() => setOpen(false)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
+            aria-hidden="true"
           />
-          
+
           {/* Panel du menu */}
-          <motion.div 
+          <motion.div
             className="absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-zinc-900 border-l border-zinc-800"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
@@ -141,26 +145,27 @@ export default function PillNavbar({ active, onJump, open, setOpen }) {
               <span className="text-lg font-bold text-white">
                 {personal.brand}
               </span>
-              <motion.button 
-                onClick={() => setOpen(false)} 
-                className="rounded-lg p-2 text-zinc-400 hover:text-white transition-colors"
+              <motion.button
+                onClick={() => setOpen(false)}
+                className="rounded-lg p-2 text-zinc-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-zinc-900"
                 whileHover={{ rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
+                aria-label="Fermer le menu"
               >
-                <X className="h-5 w-5"/>
+                <X className="h-5 w-5" aria-hidden="true" />
               </motion.button>
             </div>
-            
+
             {/* Navigation mobile */}
             <div className="p-6">
-              <nav className="space-y-4">
+              <nav className="space-y-4" aria-label="Navigation principale">
                 {NAV_ITEMS.map((navItem, index) => {
                   if (navItem.isExternal) {
                     return (
-                      <motion.a 
-                        key={navItem.id} 
+                      <motion.a
+                        key={navItem.id}
                         href={navItem.href}
-                        className="block py-3 text-lg text-zinc-300 hover:text-white transition-colors border-b border-zinc-800/50"
+                        className="block py-3 text-lg text-zinc-300 hover:text-white transition-colors border-b border-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-zinc-900 rounded"
                         initial={{ x: 50, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: index * 0.1, duration: 0.3 }}
@@ -170,22 +175,23 @@ export default function PillNavbar({ active, onJump, open, setOpen }) {
                       </motion.a>
                     );
                   }
-                  
+
                   const isActive = active === navItem.id;
-                  
+
                   return (
-                    <motion.button 
-                      key={navItem.id} 
+                    <motion.button
+                      key={navItem.id}
                       onClick={() => {
                         onJump(navItem.id);
                         setOpen(false);
-                      }} 
-                      className={`block w-full py-3 text-left text-lg transition-colors border-b border-zinc-800/50 ${
+                      }}
+                      className={`block w-full py-3 text-left text-lg transition-colors border-b border-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-zinc-900 rounded ${
                         isActive ? "text-white" : "text-zinc-300 hover:text-white"
                       }`}
                       initial={{ x: 50, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ delay: index * 0.1, duration: 0.3 }}
+                      aria-current={isActive ? "page" : undefined}
                     >
                       {navItem.label}
                       {isActive && (
@@ -194,20 +200,21 @@ export default function PillNavbar({ active, onJump, open, setOpen }) {
                           initial={{ scaleX: 0 }}
                           animate={{ scaleX: 1 }}
                           transition={{ duration: 0.3 }}
+                          aria-hidden="true"
                         />
                       )}
                     </motion.button>
                   );
                 })}
               </nav>
-              
+
               {/* Bouton Contact mobile */}
-              <motion.button 
+              <motion.button
                 onClick={() => {
                   onJump("contact");
                   setOpen(false);
-                }} 
-                className="mt-8 w-full rounded-full bg-white px-6 py-3 font-medium text-black hover:bg-zinc-100 transition-colors"
+                }}
+                className="mt-8 w-full rounded-full bg-white px-6 py-3 font-medium text-black hover:bg-zinc-100 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-zinc-900"
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.3 }}

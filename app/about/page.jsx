@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   Download,
   ExternalLink,
@@ -49,29 +50,42 @@ const aboutData = {
 };
 
 // =================== ACCORDION COMPONENT ===================
-// Composant Accordion réutilisable pour Experience, Education, Certifications
+/**
+ * Composant Accordion réutilisable pour Experience, Education, Certifications
+ * Amélioration accessibilité : ARIA attributes ajoutés
+ * @param {string} title - Titre de l'accordéon
+ * @param {ReactNode} children - Contenu de l'accordéon
+ * @param {boolean} defaultOpen - État initial ouvert/fermé
+ * @param {boolean} isLast - Indique si c'est le dernier accordéon
+ */
 const CVAccordion = ({ title, children, defaultOpen = false, isLast = false }) => {
   const [open, setOpen] = useState(defaultOpen);
-  
+  const accordionId = `accordion-${title.toLowerCase().replace(/\s+/g, '-')}`;
+
   return (
     <div className={`about_cv_accordion ${isLast ? 'is-last' : ''}`}>
-      <motion.div 
-        className="about_cv-description"
+      <motion.button
+        className="about_cv-description w-full text-left"
         onClick={() => setOpen(!open)}
         whileHover={{ backgroundColor: "rgba(255,255,255,0.05)" }}
+        aria-expanded={open}
+        aria-controls={accordionId}
       >
         <h3 className="heading-style-h5 text-color-white">{title}</h3>
-        <div className="plus-icon">
+        <div className="plus-icon" aria-hidden="true">
           {open ? <Minus className="h-5 w-5" /> : <Plus className="h-5 w-5" />}
         </div>
-      </motion.div>
-      
-      <motion.div 
+      </motion.button>
+
+      <motion.div
+        id={accordionId}
         className="about_cv_list-wrapper"
         initial={{ height: 0 }}
         animate={{ height: open ? "auto" : 0 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         style={{ overflow: "hidden" }}
+        role="region"
+        aria-labelledby={`${accordionId}-button`}
       >
         <div className="about_cv_list">
           {children}
@@ -82,21 +96,30 @@ const CVAccordion = ({ title, children, defaultOpen = false, isLast = false }) =
 };
 
 // =================== MAIN ABOUT PAGE COMPONENT ===================
-// Page Structure:
-// 1. Hero Section - Title and profile intro
-// 2. CV Section - Experience, Education, Certifications (Accordions)
-// 3. Tools Section - Technologies and skills grid
-// 4. About Myself Section - Image + My Beliefs
+/**
+ * Page À propos - Présentation détaillée du profil
+ *
+ * Structure :
+ * 1. Hero Section - Titre et introduction du profil
+ * 2. CV Section - Expérience, Éducation, Certifications (Accordéons)
+ * 3. Tools Section - Technologies et compétences en grille
+ * 4. About Myself Section - Image + Valeurs personnelles
+ */
 export default function AboutPage() {
+  const router = useRouter();
   const [activeSection, setActiveSection] = useState("about");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Navigation handler - redirects to home or other sections
+  /**
+   * Navigation handler
+   * Utilise Next.js router pour de meilleures performances et transitions
+   * @param {string} sectionId - ID de la section cible
+   */
   const navigateToSection = (sectionId) => {
     if (sectionId === "home") {
-      window.location.href = "/";
+      router.push("/");
     } else if (sectionId.includes("#")) {
-      window.location.href = sectionId;
+      router.push(sectionId);
     }
   };
 

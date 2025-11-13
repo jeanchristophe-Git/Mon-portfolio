@@ -1,0 +1,53 @@
+{
+  "title": "KOTA - App de Tontine",
+  "subtitle": "Application révolutionnaire de tontine moderne pour l'Afrique",
+  "category": "Mobile App",
+  "year": "2024",
+  "client": "Startup",
+  "duration": "6 mois",
+  "role": "Lead Developer & Product Designer",
+  "team": [
+    "Product Manager",
+    "UI/UX Designer",
+    "Backend Developer",
+    "Mobile Developer"
+  ],
+  "description": "KOTA révolutionne les tontines traditionnelles africaines en les digitalisant. Cette application mobile permet aux utilisateurs de créer, rejoindre et gérer des groupes de tontine avec une interface moderne et sécurisée.\n\nLe projet combine les valeurs culturelles africaines avec la technologie moderne pour créer une expérience utilisateur exceptionnelle. J'ai dirigé le développement frontend et l'architecture produit.",
+  "challenges": [
+    "Adapter les pratiques traditionnelles aux technologies modernes",
+    "Créer une interface intuitive pour tous les âges",
+    "Assurer la sécurité des transactions financières",
+    "Gérer les notifications push pour les contributions"
+  ],
+  "solutions": [
+    "Interface bilingue français/langues locales",
+    "Système de notifications intelligent",
+    "Architecture sécurisée avec chiffrement end-to-end",
+    "Design system culturellement adapté"
+  ],
+  "tech": [
+    "React Native",
+    "NestJS",
+    "TypeScript",
+    "PostgreSQL",
+    "Firebase"
+  ],
+  "features": [
+    "Gestion de groupes de tontine",
+    "Système de paiement intégré",
+    "Notifications intelligentes",
+    "Chat groupe intégré",
+    "Historique complet des transactions",
+    "Mode offline"
+  ],
+  "images": [
+    "/image/projet/kota-1.jpg",
+    "/image/projet/kota-2.jpg",
+    "/image/projet/kota-3.jpg"
+  ],
+  "mainImage": "/image/projet/kota.jpg",
+  "links": {
+    "demo": "#",
+    "github": "#"
+  }
+}
